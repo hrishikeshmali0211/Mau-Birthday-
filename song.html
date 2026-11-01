@@ -45,76 +45,80 @@ body {
 
 .light {
   position: absolute;
-  width: 100%;
-  height: 75%;
-  top: -15%;
-  left: -15%;
-  filter: blur(65px);
-  opacity: 0.55;
+  width: 150%;
+  height: 115%;
+  top: -25%;
+  left: -25%;
+  filter: blur(38px);
+  opacity: 0.88;
   border-radius: 50%;
   transform-origin: center;
   mix-blend-mode: screen;
+  will-change: transform;
 }
 
 .light.one {
   background: linear-gradient(
     115deg,
-    transparent 5%,
-    #00e5b0 25%,
-    #00a8c8 45%,
-    transparent 70%
+    transparent 3%,
+    rgba(0, 255, 185, 0.95) 22%,
+    rgba(0, 215, 255, 0.9) 43%,
+    rgba(100, 85, 255, 0.55) 63%,
+    transparent 82%
   );
-  animation: auroraOne 15s ease-in-out infinite alternate;
+  animation: auroraOne 9s ease-in-out infinite alternate;
 }
 
 .light.two {
   background: linear-gradient(
     110deg,
-    transparent 10%,
-    #4bffc6 30%,
-    #2b88df 55%,
-    transparent 80%
+    transparent 8%,
+    rgba(75, 255, 198, 0.95) 27%,
+    rgba(40, 170, 255, 0.85) 52%,
+    rgba(125, 80, 255, 0.6) 72%,
+    transparent 90%
   );
-  opacity: 0.35;
-  animation: auroraTwo 19s ease-in-out infinite alternate;
+  opacity: 0.78;
+  animation: auroraTwo 12s ease-in-out infinite alternate;
 }
 
 .light.three {
   background: linear-gradient(
     120deg,
-    transparent 15%,
-    #72e5b7 35%,
-    #36a9b9 60%,
-    transparent 85%
+    transparent 12%,
+    rgba(175, 255, 225, 0.9) 32%,
+    rgba(35, 230, 205, 0.8) 55%,
+    rgba(90, 120, 255, 0.65) 78%,
+    transparent 96%
   );
-  opacity: 0.3;
-  animation: auroraThree 23s ease-in-out infinite alternate;
+  opacity: 0.7;
+  animation: auroraThree 15s ease-in-out infinite alternate;
 }
 
 @keyframes auroraOne {
   0% {
-    transform: translate(-10%, 0) rotate(-12deg) scale(1);
+    transform: translate(-18%, -8%) rotate(-15deg) scale(1);
   }
   100% {
-    transform: translate(30%, 25%) rotate(12deg) scale(1.3);
+    transform: translate(24%, 20%) rotate(18deg) scale(1.42);
   }
 }
 
 @keyframes auroraTwo {
   0% {
-    transform: translate(25%, -5%) rotate(10deg) scale(1.2);
+    transform: translate(22%, -12%) rotate(14deg) scale(1.12);
   }
   100% {
-    transform: translate(-15%, 20%) rotate(-18deg) scale(1.5);
+    transform: translate(-22%, 25%) rotate(-20deg) scale(1.52);
   }
 }
 
 @keyframes auroraThree {
   0% {
-    transform: translate(-5%, 20%) rotate(-15deg) scale(1.3);
+    transform: translate(-12%, 18%) rotate(-20deg) scale(1.18);
   }
   100% {
-    transform: translate(25%, -10%) rotate(15deg) scale(1.6);
+    transform: translate(28%, -18%) rotate(22deg) scale(1.62);
   }
 }
 
@@ -751,6 +755,8 @@ const shuffleBtn = document.getElementById("shuffleBtn");
 let songs = [];
 let currentIndex = 0;
 let shuffleEnabled = false;
+let songRequestId = 0;
+let isLoadingSong = false;
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
@@ -823,10 +829,12 @@ shuffleBtn.addEventListener("click", () => {
   updateShuffleButton();
 
   if (shuffleEnabled) {
-    statusText.textContent = "Shuffle is on — surprise song time! ✨";
+    statusText.textContent = "Shuffle is on — picking a surprise song ✨";
     playSong(getRandomSongIndex());
   } else {
-    statusText.textContent = "Shuffle is off — playing in order ♡";
+    statusText.textContent = audio.paused
+      ? "Shuffle is off — playing in order ♡"
+      : "Shuffle is off — playing in order ♡";
   }
 });
 
@@ -872,15 +880,16 @@ function loadSong(index) {
   if (!songs.length) return;
 
   currentIndex = (index + songs.length) % songs.length;
-
   const song = songs[currentIndex];
 
+  audio.pause();
   audio.src = song.url;
-  currentTitle.textContent = song.title;
+  audio.load();
 
+  currentTitle.textContent = song.title;
   statusText.textContent = shuffleEnabled
-    ? "Shuffle is on — enjoy the surprise ♡"
-    : "A song just for you ♡";
+    ? "Loading your surprise song… ✨"
+    : "Loading your song… ♡";
 
   progress.value = 0;
   currentTimeElement.textContent = "0:00";
@@ -892,28 +901,68 @@ function loadSong(index) {
 async function playSong(index) {
   if (!songs.length) return;
 
+  const requestId = ++songRequestId;
+  isLoadingSong = true;
+  playBtn.textContent = "…";
+  statusText.textContent = "Loading your song… ♡";
+
   loadSong(index);
 
   try {
+    // Wait until the selected audio has enough data to begin playback.
+    await new Promise((resolve, reject) => {
+      if (audio.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+        resolve();
+        return;
+      }
+
+      const onReady = () => {
+        cleanup();
+        resolve();
+      };
+
+      const onError = () => {
+        cleanup();
+        reject(new Error("The selected audio file could not be loaded."));
+      };
+
+      const cleanup = () => {
+        audio.removeEventListener("canplay", onReady);
+        audio.removeEventListener("error", onError);
+      };
+
+      audio.addEventListener("canplay", onReady, { once: true });
+      audio.addEventListener("error", onError, { once: true });
+    });
+
+    // If a newer song was selected during loading, don't start the older one.
+    if (requestId !== songRequestId) return;
+
     await audio.play();
   } catch (error) {
-    statusText.textContent = "Tap play to start your song.";
+    if (requestId !== songRequestId) return;
+
+    console.error("Playback error:", error);
+    statusText.textContent =
+      "This song couldn't load. Try another song or press play again.";
+    playBtn.textContent = "▶";
+  } finally {
+    if (requestId === songRequestId) {
+      isLoadingSong = false;
+    }
   }
 }
 
 async function togglePlay() {
   if (!songs.length) return;
 
-  if (audio.paused) {
-    if (!audio.src) {
-      loadSong(currentIndex);
-    }
+  if (isLoadingSong) {
+    // Ignore repeated play clicks while the current track is loading.
+    return;
+  }
 
-    try {
-      await audio.play();
-    } catch (error) {
-      statusText.textContent = "Tap play to start.";
-    }
+  if (audio.paused) {
+    await playSong(currentIndex);
   } else {
     audio.pause();
   }
@@ -1017,6 +1066,12 @@ audio.addEventListener("play", () => {
     : "Playing just for you ♡";
 
   renderPlaylist();
+});
+
+audio.addEventListener("waiting", () => {
+  if (isLoadingSong) {
+    statusText.textContent = "Loading your song… ♡";
+  }
 });
 
 audio.addEventListener("pause", () => {
