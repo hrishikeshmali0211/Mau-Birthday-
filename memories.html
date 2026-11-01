@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Little Scrapbook | Mau 💚</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Caveat:wght@500;600;700&family=Quicksand:wght@400;500;600&display=swap');
+
+:root {
+  --sage: #82977B;
+  --dark-sage: #405840;
+  --cream: #F8F2E5;
+  --paper: #FFFDF6;
+  --brown: #795C43;
+  --soft-brown: #B49A7C;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--dark-sage);
+  background: var(--cream);
+  font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Vintage paper texture */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.3;
+  background-image:
+    radial-gradient(#b8a78d 0.7px, transparent 0.7px);
+  background-size: 9px 9px;
+}
+
+/* Hero section */
+
+header {
+  padding: 60px 20px 45px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    #dce5d5,
+    #f8f2e5,
+    #e4eadc
+  );
+  border-bottom: 1px solid #c7d0bc;
+  position: relative;
+  overflow: hidden;
+}
+
+.top-label {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #71836b;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 6vw, 60px);
+  margin: 18px 0;
+  color: #405840;
+}
+
+.subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 27px;
+  color: #7b8e70;
+}
+
+.intro {
+  max-width: 620px;
+  margin: 25px auto 0;
+  line-height: 1.9;
+  color: #6c765f;
+  font-size: 15px;
+}
+
+/* Floating decorations */
+
+.decor {
+  position: absolute;
+  font-size: 25px;
+  opacity: 0.65;
+  animation: float 5s ease-in-out infinite;
+}
+
+.decor.one {
+  top: 40px;
+  left: 10%;
+}
+
+.decor.two {
+  top: 100px;
+  right: 12%;
+  animation-delay: 1s;
+}
+
+.decor.three {
+  bottom: 35px;
+  left: 18%;
+  animation-delay: 2s;
+}
+
+.decor.four {
+  bottom: 45px;
+  right: 15%;
+  animation-delay: 1.5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(8deg);
+  }
+}
+
+/* Section headings */
+
+.section-title {
+  text-align: center;
+  margin: 55px 15px 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  color: #526a4d;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 23px;
+  color: #9a876e;
+  margin-bottom: 35px;
+}
+
+/* Scrapbook */
+
+.scrapbook {
+  width: min(1050px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 45px 30px;
+  padding: 20px 0 60px;
+}
+
+.polaroid {
+  position: relative;
+  background: #fffdf8;
+  padding: 13px 13px 48px;
+  box-shadow: 0 6px 15px #7e755b25;
+  transform: rotate(var(--rotation, 0deg));
+  transition: transform 0.35s, box-shadow 0.35s;
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow: 0 14px 25px #7e755b35;
+  z-index: 3;
+}
+
+.polaroid:nth-child(2n) {
+  --rotation: 2deg;
+}
+
+.polaroid:nth-child(3n) {
+  --rotation: -2.5deg;
+}
+
+.polaroid:nth-child(4n) {
+  --rotation: 1.5deg;
+}
+
+/* Photo placeholders */
+
+.photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  background: linear-gradient(135deg, #dbe4d3, #f1e6d5);
+  color: #73836a;
+  text-align: center;
+  padding: 15px;
+  position: relative;
+}
+
+.photo-placeholder .emoji {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.photo-placeholder span {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+}
+
+.photo-placeholder small {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #819079;
+}
+
+.caption {
+  position: absolute;
+  bottom: 10px;
+  left: 8px;
+  right: 8px;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  color: #775e48;
+}
+
+/* Individual placeholder colors */
+
+.polaroid:nth-child(2) .photo-placeholder {
+  background: linear-gradient(135deg, #ead9c6, #f6ebda);
+}
+
+.polaroid:nth-child(3) .photo-placeholder {
+  background: linear-gradient(135deg, #d7e3dc, #edf1e5);
+}
+
+.polaroid:nth-child(4) .photo-placeholder {
+  background: linear-gradient(135deg, #e9ddc8, #d8e1d0);
+}
+
+.polaroid:nth-child(5) .photo-placeholder {
+  background: linear-gradient(135deg, #dce4d3, #e9d9ca);
+}
+
+.polaroid:nth-child(6) .photo-placeholder {
+  background: linear-gradient(135deg, #e8e0d2, #d6e2d6);
+}
+
+/* Washi tape */
+
+.tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 75px;
+  height: 23px;
+  background: #d8c9a4aa;
+  z-index: 2;
+}
+
+/* Story timeline */
+
+.story-section {
+  margin-top: 25px;
+  padding: 45px 20px 60px;
+  background: #e5e9dc;
+}
+
+.timeline {
+  max-width: 650px;
+  margin: 35px auto 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 5px;
+  bottom: 5px;
+  width: 2px;
+  background: #a3b39a;
+}
+
+.timeline-item {
+  position: relative;
+  margin: 0 0 30px 48px;
+  padding: 20px 22px;
+  background: #fffdf6;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px #65765c12;
+}
+
+.timeline-item::before {
+  content: "♥";
+  position: absolute;
+  left: -42px;
+  top: 18px;
+  color: #a16e62;
+  font-size: 19px;
+}
+
+.timeline-item h3 {
+  margin: 0 0 8px;
+  font-family: 'Playfair Display', serif;
+  color: #526a4d;
+}
+
+.timeline-item p {
+  margin: 0;
+  line-height: 1.8;
+  color: #7c7767;
+}
+
+/* Secret note */
+
+.note-section {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.note-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+}
+
+.note-button {
+  border: 1px solid #819477;
+  background: #82977b;
+  color: white;
+  border-radius: 30px;
+  padding: 14px 27px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.note-button:hover {
+  background: #526a4d;
+  transform: translateY(-3px);
+}
+
+.hidden-note {
+  display: none;
+  max-width: 560px;
+  margin: 25px auto 0;
+  padding: 28px;
+  background: #fffdf6;
+  border: 1px dashed #b5a48a;
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  line-height: 1.7;
+  animation: fadeIn 0.8s ease;
+}
+
+/* Home button */
+
+.home-button {
+  display: inline-block;
+  margin: 10px 0 35px;
+  padding: 13px 27px;
+  border-radius: 30px;
+  background: #526a4d;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.home-button:hover {
+  background: #344b34;
+  transform: translateY(-3px);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #8c927f;
+  font-family: 'Caveat', cursive;
+  font-size: 21px;
+}
+
+/* Reveal animation */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile layout */
+
+@media (max-width: 750px) {
+  .scrapbook {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 18px;
+  }
+
+  .polaroid {
+    padding: 9px 9px 40px;
+  }
+
+  .caption {
+    font-size: 20px;
+  }
+
+  .photo-placeholder .emoji {
+    font-size: 35px;
+  }
+
+  .photo-placeholder span {
+    font-size: 19px;
+  }
+
+  .decor {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .scrapbook {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+  }
+
+  h1 {
+    font-size: 35px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="decor one">🍃</div>
+  <div class="decor two">♡</div>
+  <div class="decor three">🌼</div>
+  <div class="decor four">✿</div>
+
+  <div class="top-label">A little book of us</div>
+
+  <h1>Our Little Memories 📸</h1>
+
+  <div class="subtitle">
+    Every moment with you is a page I never want to forget.
+  </div>
+
+  <p class="intro">
+    Some moments become memories.
+    Some memories become treasures.
+    And some people make every ordinary day feel special.
+    You are that person for me, Mau. 🤍
+  </p>
+
+</header>
+
+<h2 class="section-title">Our Scrapbook</h2>
+
+<p class="section-subtitle">
+  Six little spaces for our favourite moments
+</p>
+
+<div class="scrapbook">
+
+  <div class="polaroid">
+    <div class="tape"></div>
+    <div class="photo-placeholder">
+      <div class="emoji">📷</div>
+      <span>Our First Picture</span>
+      <small>Our memory goes here</small>
+    </div>
+    <div class="caption">The beginning of us ♡</div>
+  </div>
+
+  <div class="polaroid">
+    <div class="tape"></div>
+    <div class="photo-placeholder">
+      <div class="emoji">🌷</div>
+      <span>Our Favourite Day</span>
+      <small>Our memory goes here</small>
+    </div>
+    <div class="caption">A day to remember</div>
+  </div>
+
+  <div class="polaroid">
+    <div class="tape"></div>
+    <div class="photo-placeholder">
+      <div class="emoji">☕</div>
+      <span>Little Adventures</span>
+      <small>Our memory goes here</small>
+    </div>
+    <div class="caption">Anywhere with you</div>
+  </div>
+
+  <div class="polaroid">
+    <div class="tape"></div>
+    <div class="photo-placeholder">
+      <div class="emoji">🌅</div>
+      <span>Our Happy Place</span>
+      <small>Our memory goes here</small>
+    </div>
+    <div class="caption">My favourite view</div>
+  </div>
+
+  <div class="polaroid">
+    <div class="tape"></div>
+    <div class="photo-placeholder">
+      <div class="emoji">💌</div>
+      <span>A Silly Moment</span>
+      <small>Our memory goes here</small>
+    </div>
+    <div class="caption">Just being us</div>
+  </div>
+
+  <div class="polaroid">
+    <div class="tape"></div>
+    <div class="photo-placeholder">
+      <div class="emoji">✨</div>
+      <span>My Favourite Memory</span>
+      <small>Our memory goes here</small>
+    </div>
+    <div class="caption">And many more to come</div>
+  </div>
+
+</div>
+
+<section class="story-section">
+
+  <h2 class="section-title">Our Little Story</h2>
+
+  <p class="section-subtitle">
+    The moments that make our story ours
+  </p>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <h3>🌱 The Beginning</h3>
+      <p>
+        The day you became someone special to me.
+        A little moment that turned into something beautiful.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>🌼 Getting Closer</h3>
+      <p>
+        The conversations, the laughs, the little things
+        that made me realise how much you mean to me.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>🤍 My Favourite Person</h3>
+      <p>
+        Somewhere along the way, you became the person
+        I want to share my happiest and simplest moments with.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>✨ More Memories Ahead</h3>
+      <p>
+        This scrapbook is not complete.
+        We still have so many beautiful memories waiting to be made.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="note-section">
+
+  <h2>A Little Note for You 💌</h2>
+
+  <p class="section-subtitle">
+    There's something I want you to remember...
+  </p>
+
+  <button class="note-button" onclick="revealNote()">
+    Open Your Secret Note 🤍
+  </button>
+
+  <div class="hidden-note" id="secretNote">
+    If I could keep one thing from every day of my life,
+    it would be the moments I spent with you.
+
+    <br><br>
+
+    Thank you for being you, Mau.
+    Here's to all the memories we've made
+    and all the beautiful ones still waiting for us.
+
+    <br><br>
+
+    I love you. Always. ♡
+  </div>
+
+</section>
+
+<div style="text-align:center">
+  <a href="index.html" class="home-button">
+    🏠 Back to Birthday Home
+  </a>
+</div>
+
+<footer>
+  Made with love, for Mau ♡
+</footer>
+
+<script>
+function revealNote() {
+  const note = document.getElementById("secretNote");
+  const button = document.querySelector(".note-button");
+
+  note.style.display = "block";
+  button.innerText = "A little reminder of my love 🤍";
+  button.disabled = true;
+
+  note.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+</script>
+
+</body>
+</html>
