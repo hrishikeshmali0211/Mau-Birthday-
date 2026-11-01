@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Little Universe 🌌</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Caveat:wght@500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #f5edff;
+  font-family: 'Quicksand', sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 40%, #29245b 0%, #151638 35%, #090d24 75%, #050817 100%);
+}
+
+/* Starry sky */
+
+#stars,
+#stars2,
+#stars3 {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+#stars {
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, white 99%, transparent),
+    radial-gradient(1px 1px at 80% 30%, #d7c9ff 99%, transparent),
+    radial-gradient(2px 2px at 45% 70%, white 99%, transparent),
+    radial-gradient(1px 1px at 65% 85%, #c5cfff 99%, transparent),
+    radial-gradient(1px 1px at 25% 90%, white 99%, transparent),
+    radial-gradient(1px 1px at 90% 75%, white 99%, transparent),
+    radial-gradient(2px 2px at 30% 45%, #c8baff 99%, transparent),
+    radial-gradient(1px 1px at 55% 10%, white 99%, transparent);
+  background-size: 350px 350px;
+  animation: twinkle 5s infinite alternate;
+}
+
+#stars2 {
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, #fff 99%, transparent),
+    radial-gradient(1px 1px at 70% 60%, #b9caff 99%, transparent),
+    radial-gradient(1px 1px at 35% 80%, white 99%, transparent),
+    radial-gradient(2px 2px at 90% 20%, #d8c5ff 99%, transparent);
+  background-size: 450px 450px;
+  animation: twinkle 7s infinite alternate-reverse;
+}
+
+#stars3 {
+  background-image:
+    radial-gradient(1px 1px at 15% 50%, white 99%, transparent),
+    radial-gradient(2px 2px at 55% 25%, #e1d7ff 99%, transparent),
+    radial-gradient(1px 1px at 80% 80%, white 99%, transparent);
+  background-size: 250px 250px;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.35; }
+  to { opacity: 1; }
+}
+
+/* Header */
+
+header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 45px 20px 0;
+}
+
+.eyebrow {
+  color: #b8aaff;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 7vw, 58px);
+  margin: 15px 0 10px;
+  background: linear-gradient(90deg, #f3eaff, #bcb2ff, #f9e3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px #c8b6ff20;
+}
+
+.subtitle {
+  color: #c8c4ed;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Universe scene */
+
+.universe {
+  position: relative;
+  width: min(100%, 900px);
+  height: 500px;
+  margin: 10px auto 0;
+}
+
+/* Planet orbit */
+
+.orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 370px;
+  height: 370px;
+  border: 1px solid #b8aaff22;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: orbitPulse 7s ease-in-out infinite;
+}
+
+.orbit2 {
+  width: 500px;
+  height: 500px;
+  border-color: #b8aaff14;
+}
+
+@keyframes orbitPulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+/* Main glowing moon */
+
+.moon {
+  position: absolute;
+  width: 155px;
+  height: 155px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, #fff9ff 0%, #e7d9ff 18%, #bba5f4 45%, #7763bd 75%, #4b3c87 100%);
+  box-shadow:
+    0 0 25px #bba5f455,
+    0 0 65px #9c83ff50,
+    0 0 120px #6b59d12c;
+  cursor: pointer;
+  animation: moonFloat 5s ease-in-out infinite;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.moon:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow:
+    0 0 35px #d4c5ff90,
+    0 0 90px #9c83ff70,
+    0 0 150px #6b59d150;
+}
+
+.moon::before {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 27px;
+  background: #a28bd8;
+  border-radius: 50%;
+  top: 38px;
+  left: 32px;
+  opacity: 0.25;
+  transform: rotate(-25deg);
+}
+
+.moon::after {
+  content: "";
+  position: absolute;
+  width: 23px;
+  height: 18px;
+  background: #8c77c7;
+  border-radius: 50%;
+  bottom: 35px;
+  right: 30px;
+  opacity: 0.25;
+}
+
+@keyframes moonFloat {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -13px; }
+}
+
+/* Small planets */
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  animation: planetFloat 6s ease-in-out infinite;
+}
+
+.planet1 {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #ffdbab, #d986a5, #7f5aa7);
+  left: 20%;
+  top: 30%;
+  box-shadow: 0 0 25px #d986a550;
+}
+
+.planet2 {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #8df0e2, #5085cf);
+  right: 18%;
+  top: 58%;
+  box-shadow: 0 0 20px #6cd4ff50;
+  animation-delay: -2s;
+}
+
+.planet3 {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #f8b4d0, #a18bff);
+  left: 25%;
+  bottom: 18%;
+  box-shadow: 0 0 20px #f8b4d050;
+  animation-delay: -4s;
+}
+
+@keyframes planetFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Small stars */
+
+.star {
+  position: absolute;
+  color: #fff;
+  font-size: 18px;
+  animation: starPulse 2.5s ease-in-out infinite;
+}
+
+.star1 { top: 18%; left: 35%; }
+.star2 { top: 22%; right: 30%; animation-delay: 1s; }
+.star3 { bottom: 25%; right: 33%; animation-delay: 0.5s; }
+.star4 { bottom: 20%; left: 38%; animation-delay: 1.5s; }
+.star5 { top: 48%; left: 14%; animation-delay: 0.8s; }
+.star6 { top: 38%; right: 12%; animation-delay: 1.2s; }
+
+@keyframes starPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* Message */
+
+.message-area {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0 20px 30px;
+}
+
+.tap-hint {
+  color: #b9b2e8;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.message-card {
+  display: none;
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 30px;
+  border: 1px solid #b7a7ff40;
+  border-radius: 20px;
+  background: #171936b8;
+  box-shadow: 0 0 50px #9282ff15;
+  backdrop-filter: blur(10px);
+  animation: messageAppear 1s ease forwards;
+}
+
+.message-card.show {
+  display: block;
+}
+
+.message-card h2 {
+  font-family: 'Playfair Display', serif;
+  color: #e7dfff;
+  font-size: 27px;
+  margin-top: 0;
+}
+
+.message-card p {
+  color: #d1ccef;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Home */
+
+.home-area {
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  padding: 15px 20px 40px;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 12px 25px;
+  border: 1px solid #bcb0ff60;
+  border-radius: 30px;
+  color: #eee8ff;
+  background: #29244e80;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.home-button:hover {
+  background: #514581;
+  transform: translateY(-3px);
+}
+
+footer {
+  text-align: center;
+  padding: 0 20px 25px;
+  color: #7778a9;
+  font-family: 'Caveat', cursive;
+  font-size: 21px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .universe {
+    height: 390px;
+  }
+
+  .orbit {
+    width: 280px;
+    height: 280px;
+  }
+
+  .orbit2 {
+    width: 350px;
+    height: 350px;
+  }
+
+  .moon {
+    width: 125px;
+    height: 125px;
+  }
+
+  .planet1 {
+    left: 8%;
+  }
+
+  .planet2 {
+    right: 7%;
+  }
+
+  .planet3 {
+    left: 15%;
+  }
+
+  .message-card {
+    padding: 25px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<div id="stars2"></div>
+<div id="stars3"></div>
+
+<header>
+  <div class="eyebrow">A little universe made for you</div>
+
+  <h1>Our Little Universe 🌌</h1>
+
+  <div class="subtitle">
+    Somewhere among billions of stars,<br>
+    my favourite person is you.
+  </div>
+</header>
+
+<section class="universe">
+
+  <div class="orbit orbit2"></div>
+  <div class="orbit"></div>
+
+  <div class="planet planet1"></div>
+  <div class="planet planet2"></div>
+  <div class="planet planet3"></div>
+
+  <span class="star star1">✦</span>
+  <span class="star star2">✧</span>
+  <span class="star star3">✦</span>
+  <span class="star star4">✧</span>
+  <span class="star star5">✦</span>
+  <span class="star star6">✧</span>
+
+  <div class="moon" onclick="revealMessage()" aria-label="Reveal a message"></div>
+
+</section>
+
+<section class="message-area">
+
+  <div class="tap-hint" id="tapHint">
+    ✨ Tap the glowing moon to discover a little secret ✨
+  </div>
+
+  <div class="message-card" id="messageCard">
+
+    <h2>My favourite star is you, Mau 💜</h2>
+
+    <p>
+      Out of all the stars in the sky, all the planets in the universe,
+      and all the possible paths life could have taken...
+      somehow, I found you.
+    </p>
+
+    <p>
+      And if I had to choose again, in a million different universes,
+      I would still look for you.
+    </p>
+
+    <p>
+      You make my world brighter just by being in it.
+      No matter how big this universe is,
+      my favourite place will always be beside you.
+    </p>
+
+    <p>
+      Happy Birthday, my love. 🌙
+    </p>
+
+  </div>
+
+</section>
+
+<div class="home-area">
+  <a href="index.html" class="home-button">
+    🏠 Back to Birthday Home
+  </a>
+</div>
+
+<footer>
+  In every universe, it's still you. ♡
+</footer>
+
+<script>
+function revealMessage() {
+  const card = document.getElementById("messageCard");
+  const hint = document.getElementById("tapHint");
+
+  card.classList.add("show");
+  hint.style.display = "none";
+
+  card.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+</script>
+
+</body>
+</html>
