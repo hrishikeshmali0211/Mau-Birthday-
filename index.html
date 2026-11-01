@@ -16,54 +16,71 @@ body {
   font-family: Georgia, serif;
   background: linear-gradient(135deg, #fff0f5, #ffe0ec, #fff5f8);
   color: #9d174d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  text-align: center;
+  padding: 30px 15px;
 }
 
-.welcome {
-  text-align: center;
-  padding: 30px;
+.container {
   max-width: 850px;
+  margin: auto;
+  padding: 35px 20px;
   position: relative;
   z-index: 2;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  margin-bottom: 15px;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  margin-bottom: 10px;
 }
 
-p {
-  font-size: 1.2rem;
+.subtitle {
+  font-size: 1.15rem;
   line-height: 1.8;
+  margin-bottom: 30px;
 }
 
-button {
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 650px;
+  margin: 30px auto;
+}
+
+.page-button {
+  display: block;
+  background: #fff;
+  color: #b4235a;
+  text-decoration: none;
+  padding: 20px 12px;
+  border-radius: 20px;
+  border: 1px solid #ffd0e0;
+  box-shadow: 0 8px 20px #e91e6315;
+  transition: transform 0.3s, background 0.3s;
+  font-size: 1.05rem;
+}
+
+.page-button:hover {
+  transform: translateY(-5px);
+  background: #ffe3ee;
+}
+
+.final-button {
   background: #e91e63;
   color: white;
-  border: none;
-  border-radius: 35px;
-  padding: 17px 35px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  margin-top: 25px;
-  box-shadow: 0 8px 25px #e91e6340;
-  transition: transform 0.3s;
 }
 
-button:hover {
-  transform: scale(1.07);
+.final-button:hover {
+  background: #c2185b;
 }
 
 .heart {
-  position: absolute;
+  position: fixed;
   bottom: -50px;
   color: #ff6b9d;
   animation: float 9s linear infinite;
   opacity: 0.6;
-  z-index: 1;
+  pointer-events: none;
 }
 
 @keyframes float {
@@ -80,13 +97,13 @@ button:hover {
   }
 }
 
-@media (max-width: 600px) {
-  h1 {
-    font-size: 2.8rem;
+@media (max-width: 500px) {
+  .buttons {
+    grid-template-columns: 1fr;
   }
 
-  p {
-    font-size: 1rem;
+  h1 {
+    font-size: 2.7rem;
   }
 }
 </style>
@@ -94,25 +111,62 @@ button:hover {
 
 <body>
 
-<div class="welcome">
+<div class="container">
+
   <h1>Happy Birthday, Mau! 💗</h1>
 
-  <p>
-    Something special has been made just for you…
+  <p class="subtitle">
+    A little world made just for you…
     <br>
-    A little world filled with love, memories, and surprises.
+    Filled with memories, music, love, and surprises.
+    <br>
+    Choose where you'd like to go first. 🎀
   </p>
 
-  <button onclick="location.href='gift.html'">
-    Open Your Birthday Surprise 🎁
-  </button>
+  <div class="buttons">
+
+    <a class="page-button" href="gift.html">
+      🎁 Open the Gift
+    </a>
+
+    <a class="page-button" href="memories.html">
+      📸 Our Memories
+    </a>
+
+    <a class="page-button" href="letter.html">
+      💌 A Letter from My Heart
+    </a>
+
+    <a class="page-button" href="universe.html">
+      🌌 Our Little Universe
+    </a>
+
+    <a class="page-button" href="song.html">
+      🎵 Our Song
+    </a>
+
+    <a class="page-button" href="reasons.html">
+      💕 Reasons I Love You
+    </a>
+
+    <a class="page-button final-button" href="final.html"
+       style="grid-column: 1 / -1;">
+      ✨ The Final Surprise ✨
+    </a>
+
+  </div>
+
+  <p>Made with all my love, just for you. 💗</p>
+
 </div>
 
 <script>
 for (let i = 0; i < 25; i++) {
   const heart = document.createElement("div");
   heart.className = "heart";
-  heart.textContent = ["♡", "♥", "💕", "💗"][Math.floor(Math.random() * 4)];
+  heart.textContent = ["♡", "♥", "💕", "💗"][
+    Math.floor(Math.random() * 4)
+  ];
 
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = (15 + Math.random() * 30) + "px";
