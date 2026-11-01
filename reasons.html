@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Thousand Little Reasons ☀️</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #fffaf0;
+      --yellow: #ffe7a3;
+      --gold: #f3bd55;
+      --orange: #f19a50;
+      --brown: #76543b;
+      --dark: #4d3828;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: "DM Sans", sans-serif;
+      color: var(--dark);
+      background:
+        radial-gradient(circle at 10% 10%, #fff0bd 0, transparent 30%),
+        radial-gradient(circle at 90% 20%, #ffe0a1 0, transparent 28%),
+        linear-gradient(135deg, #fffaf0, #fff2d5, #fff8e8);
+    }
+
+    /* Soft sunlight in the background */
+    .sun-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 211, 105, 0.28), transparent 70%);
+      top: -220px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      animation: sunPulse 7s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes sunPulse {
+      from { transform: translateX(-50%) scale(0.9); opacity: 0.6; }
+      to { transform: translateX(-50%) scale(1.2); opacity: 1; }
+    }
+
+    .home {
+      position: fixed;
+      top: 22px;
+      left: 22px;
+      z-index: 20;
+      text-decoration: none;
+      color: var(--brown);
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(193, 144, 70, 0.25);
+      padding: 11px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 5px 20px rgba(140, 95, 30, 0.08);
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    .home:hover {
+      transform: translateY(-3px);
+      background: white;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1100px, 92%);
+      margin: auto;
+      padding: 100px 0 65px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: #a9772c;
+      background: rgba(255, 224, 151, 0.45);
+      border: 1px solid rgba(218, 170, 77, 0.25);
+      border-radius: 30px;
+      padding: 9px 17px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 7vw, 76px);
+      font-weight: 500;
+      line-height: 1.12;
+      color: #79502c;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: #e5a83f;
+      font-style: italic;
+    }
+
+    .subtitle {
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #94765a;
+    }
+
+    .sun-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 35px 0;
+      color: #e6b34f;
+      font-size: 22px;
+    }
+
+    .sun-divider::before,
+    .sun-divider::after {
+      content: "";
+      width: 75px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e8bd70);
+    }
+
+    .sun-divider::after {
+      transform: rotate(180deg);
+    }
+
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin: 0 auto;
+    }
+
+    .reason-card {
+      min-height: 210px;
+      position: relative;
+      border: 1px solid rgba(211, 164, 76, 0.25);
+      border-radius: 24px;
+      padding: 28px 22px;
+      background: rgba(255, 255, 255, 0.67);
+      box-shadow: 0 12px 30px rgba(145, 103, 41, 0.07);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.35s, box-shadow 0.35s, background 0.35s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .reason-card::before {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(255, 222, 143, 0.2);
+      top: -65px;
+      right: -55px;
+      transition: 0.4s;
+    }
+
+    .reason-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 40px rgba(145, 103, 41, 0.13);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .reason-card:hover::before {
+      transform: scale(1.6);
+    }
+
+    .reason-card.revealed {
+      background: #fff9e9;
+      border-color: rgba(230, 179, 79, 0.55);
+    }
+
+    .card-number {
+      position: absolute;
+      top: 15px;
+      left: 18px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: #c4a16b;
+    }
+
+    .card-icon {
+      font-size: 34px;
+      margin-bottom: 17px;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.4s;
+    }
+
+    .reason-card:hover .card-icon {
+      transform: rotate(-8deg) scale(1.12);
+    }
+
+    .card-title {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #8a633d;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-message {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #967b5d;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tap-hint {
+      font-size: 11px;
+      color: #c49a56;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .closing {
+      margin: 55px auto 35px;
+      max-width: 700px;
+      padding: 35px 25px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(211, 164, 76, 0.2);
+    }
+
+    .closing .heart {
+      font-size: 36px;
+      display: inline-block;
+      animation: heartbeat 1.7s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.18); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.12); }
+    }
+
+    .closing h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(25px, 4vw, 38px);
+      font-weight: 500;
+      color: #8a633d;
+      margin: 16px 0;
+    }
+
+    .closing p {
+      color: #94765a;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .continue-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 15px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(135deg, #e7ad4c, #ed9452);
+      box-shadow: 0 10px 25px rgba(219, 151, 55, 0.25);
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .continue-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(219, 151, 55, 0.35);
+    }
+
+    .footer {
+      margin-top: 25px;
+      color: #b59a78;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* Floating decorative hearts */
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      color: rgba(231, 170, 67, 0.45);
+      font-size: 20px;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 0.7; }
+      85% { opacity: 0.6; }
+      100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .reasons-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .page {
+        padding-top: 95px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .reasons-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .reason-card {
+        min-height: 185px;
+      }
+
+      .home {
+        top: 14px;
+        left: 14px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sun-glow"></div>
+
+  <a class="home" href="index.html">← Home</a>
+
+  <main class="page">
+    <div class="eyebrow">A little piece of my heart ☀️</div>
+
+    <h1>A Thousand Little<br><span>Reasons I Love You</span></h1>
+
+    <p class="subtitle">
+      I could spend forever telling you all the things I love about you.
+      Here are just a few little reasons why you mean the world to me.
+      Tap each card to open a little piece of my heart.
+    </p>
+
+    <div class="sun-divider">☼</div>
+
+    <section class="reasons-grid" id="reasonsGrid"></section>
+
+    <section class="closing">
+      <div class="heart">💛</div>
+      <h2>And the list goes on...</h2>
+      <p>
+        These are only a few reasons, Mau. The truth is, I fall in love
+        with you in a thousand little ways, every single day.
+        And if I had a thousand lifetimes, I would still choose you.
+      </p>
+
+      <a class="continue-btn" href="final.html">
+        One Last Surprise <span>→</span>
+      </a>
+    </section>
+
+    <div class="footer">
+      MADE WITH ALL MY LOVE, JUST FOR YOU ✨
+    </div>
+  </main>
+
+  <script>
+    const reasons = [
+      {
+        icon: "😊",
+        title: "Your Smile",
+        message: "Because your smile has this magical way of making even my hardest days feel a little brighter."
+      },
+      {
+        icon: "🏡",
+        title: "You Feel Like Home",
+        message: "Because no matter where I am, being with you is where I feel most at home."
+      },
+      {
+        icon: "💗",
+        title: "Your Beautiful Heart",
+        message: "Because the kindness, love, and warmth inside you are even more beautiful than anything I could see."
+      },
+      {
+        icon: "🌻",
+        title: "Your Little Things",
+        message: "Because the tiny things you do without even noticing are the things I remember the most."
+      },
+      {
+        icon: "😂",
+        title: "Your Laugh",
+        message: "Because hearing you laugh is one of my favourite sounds in the whole world."
+      },
+      {
+        icon: "🤍",
+        title: "The Way You Care",
+        message: "Because you make me feel loved in ways that words could never fully explain."
+      },
+      {
+        icon: "✨",
+        title: "Your Magic",
+        message: "Because somehow, ordinary moments become unforgettable whenever you are part of them."
+      },
+      {
+        icon: "🫶",
+        title: "Being Yourself",
+        message: "Because I love the real you — every little detail, every mood, every version of you."
+      },
+      {
+        icon: "💞",
+        title: "Choosing You",
+        message: "Because no matter how many choices life gives me, my heart keeps choosing you."
+      }
+    ];
+
+    const grid = document.getElementById("reasonsGrid");
+
+    reasons.forEach((reason, index) => {
+      const card = document.createElement("article");
+      card.className = "reason-card";
+
+      card.innerHTML = `
+        <span class="card-number">REASON ${String(index + 1).padStart(2, "0")}</span>
+        <div class="card-icon">${reason.icon}</div>
+        <h3 class="card-title">${reason.title}</h3>
+        <p class="card-message">A little reason, waiting to be revealed...</p>
+        <span class="tap-hint">Tap to reveal ✨</span>
+      `;
+
+      card.addEventListener("click", () => {
+        const message = card.querySelector(".card-message");
+        const hint = card.querySelector(".tap-hint");
+
+        if (!card.classList.contains("revealed")) {
+          card.classList.add("revealed");
+          message.textContent = reason.message;
+          hint.textContent = "A little piece of my heart 💛";
+        } else {
+          card.classList.remove("revealed");
+          message.textContent = "A little reason, waiting to be revealed...";
+          hint.textContent = "Tap to reveal ✨";
+        }
+      });
+
+      grid.appendChild(card);
+    });
+
+    // Create gentle floating hearts
+    const heartSymbols = ["♡", "♥", "✧", "💛"];
+
+    function createFloatingHeart() {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      heart.textContent = heartSymbols[
+        Math.floor(Math.random() * heartSymbols.length)
+      ];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (12 + Math.random() * 18) + "px";
+      heart.style.animationDuration = (9 + Math.random() * 10) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 20000);
+    }
+
+    setInterval(createFloatingHeart, 850);
+  </script>
+</body>
+</html>
