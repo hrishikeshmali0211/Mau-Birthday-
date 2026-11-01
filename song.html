@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Song 🌊</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Caveat:wght@500;600;700&display=swap');
+
+:root {
+  --deep-blue: #164d70;
+  --ocean: #218ca5;
+  --turquoise: #71d4d1;
+  --foam: #eaffff;
+  --sunset: #ffc8a8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Quicksand', sans-serif;
+  color: #164d70;
+  background: linear-gradient(
+    180deg,
+    #b9e9f9 0%,
+    #d9f5f8 35%,
+    #a8e7e5 65%,
+    #54b6c6 100%
+  );
+}
+
+/* =====================
+   SKY AND SUNSET
+===================== */
+
+.sky {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.sun-glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    #fff5cf 0%,
+    #ffd9b5 25%,
+    #ffc6d7 40%,
+    transparent 72%
+  );
+  opacity: 0.9;
+  animation: sunGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes sunGlow {
+  from {
+    opacity: 0.65;
+    transform: translateX(-50%) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+
+/* Clouds */
+
+.cloud {
+  position: absolute;
+  width: 150px;
+  height: 45px;
+  background: #ffffffa8;
+  border-radius: 50px;
+  filter: blur(1px);
+  animation: cloudDrift linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 70px;
+  height: 70px;
+  top: -30px;
+  left: 25px;
+}
+
+.cloud::after {
+  width: 90px;
+  height: 85px;
+  top: -45px;
+  right: 15px;
+}
+
+.cloud-one {
+  top: 15%;
+  left: -200px;
+  animation-duration: 45s;
+}
+
+.cloud-two {
+  top: 27%;
+  left: -250px;
+  transform: scale(0.7);
+  opacity: 0.65;
+  animation-duration: 60s;
+  animation-delay: -20s;
+}
+
+.cloud-three {
+  top: 9%;
+  left: -300px;
+  transform: scale(0.5);
+  opacity: 0.5;
+  animation-duration: 70s;
+  animation-delay: -35s;
+}
+
+@keyframes cloudDrift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(130vw);
+  }
+}
+
+/* =====================
+   HEADER
+===================== */
+
+header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 45px 20px 10px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #367e9a;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 7vw, 58px);
+  color: #155778;
+  margin: 15px 0 10px;
+  text-shadow: 0 3px 20px #ffffff80;
+}
+
+.subtitle {
+  color: #397b91;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =====================
+   OCEAN WAVES
+===================== */
+
+.ocean {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 200px;
+  left: -50%;
+  border-radius: 45%;
+}
+
+.wave-one {
+  bottom: -110px;
+  background: #58c3d1b5;
+  animation: waveMove 12s linear infinite;
+}
+
+.wave-two {
+  bottom: -125px;
+  background: #36a8c4b8;
+  animation: waveMove 17s linear infinite reverse;
+}
+
+.wave-three {
+  bottom: -145px;
+  background: #197da7e8;
+  animation: waveMove 22s linear infinite;
+}
+
+@keyframes waveMove {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =====================
+   FLOATING BUBBLES
+===================== */
+
+.bubble {
+  position: fixed;
+  bottom: -50px;
+  border: 1px solid #ffffff9c;
+  background: #ffffff35;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  animation: bubbleFloat linear infinite;
+}
+
+.bubble:nth-child(1) {
+  width: 15px;
+  height: 15px;
+  left: 10%;
+  animation-duration: 12s;
+}
+
+.bubble:nth-child(2) {
+  width: 24px;
+  height: 24px;
+  left: 30%;
+  animation-duration: 15s;
+  animation-delay: -6s;
+}
+
+.bubble:nth-child(3) {
+  width: 10px;
+  height: 10px;
+  left: 55%;
+  animation-duration: 10s;
+  animation-delay: -3s;
+}
+
+.bubble:nth-child(4) {
+  width: 20px;
+  height: 20px;
+  left: 75%;
+  animation-duration: 14s;
+  animation-delay: -8s;
+}
+
+.bubble:nth-child(5) {
+  width: 12px;
+  height: 12px;
+  left: 90%;
+  animation-duration: 11s;
+  animation-delay: -4s;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(-110vh) translateX(30px);
+    opacity: 0;
+  }
+}
+
+/* =====================
+   MUSIC PLAYER
+===================== */
+
+.player-area {
+  position: relative;
+  z-index: 5;
+  padding: 25px 20px 50px;
+}
+
+.player-card {
+  width: min(430px, 92vw);
+  margin: 20px auto;
+  padding: 28px;
+  border: 1px solid #ffffffa0;
+  border-radius: 28px;
+  background: #f4ffffc9;
+  box-shadow:
+    0 20px 60px #1e78932c,
+    inset 0 1px 0 #ffffff;
+  backdrop-filter: blur(12px);
+  text-align: center;
+}
+
+/* Album artwork */
+
+.album-art {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #fff9dc 0%, #ffd3ac 20%, #f2a9c6 45%, #76cbd4 70%, #3992b2 100%);
+  box-shadow:
+    0 10px 35px #3c94a550,
+    inset 0 0 25px #ffffff70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.album-art::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #ffffffa0;
+  border-radius: 50%;
+}
+
+.album-heart {
+  font-size: 60px;
+  color: #fff9f7;
+  text-shadow: 0 0 25px #ffffff;
+  animation: heartBeat 3s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+/* Artwork rotation when playing */
+
+.album-art.playing {
+  animation: albumRotate 18s linear infinite;
+}
+
+@keyframes albumRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.song-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  margin: 0 0 8px;
+  color: #195d7a;
+}
+
+.song-subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: #5494a8;
+  margin: 0 0 25px;
+}
+
+/* Progress bar */
+
+.progress-area {
+  margin: 20px 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #b6dfe7;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #3cabc2, #a0dfe2);
+  border-radius: 10px;
+}
+
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #6794a5;
+}
+
+/* Player buttons */
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin: 22px 0 10px;
+}
+
+.play-button {
+  width: 65px;
+  height: 65px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5ab9cb, #338aa9);
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px #368fa64d;
+  transition: 0.3s;
+}
+
+.play-button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 28px #368fa675;
+}
+
+.secondary-button {
+  border: none;
+  background: transparent;
+  color: #4b91a7;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Audio visualizer */
+
+.visualizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 45px;
+  margin-top: 15px;
+}
+
+.visualizer span {
+  width: 4px;
+  height: 8px;
+  border-radius: 10px;
+  background: #54b6c6;
+  opacity: 0.5;
+}
+
+.visualizer.playing span {
+  animation: soundWave 0.7s ease-in-out infinite alternate;
+  opacity: 1;
+}
+
+.visualizer span:nth-child(2n) {
+  animation-delay: 0.2s;
+}
+
+.visualizer span:nth-child(3n) {
+  animation-delay: 0.4s;
+}
+
+.visualizer span:nth-child(4n) {
+  animation-delay: 0.1s;
+}
+
+@keyframes soundWave {
+  from {
+    height: 5px;
+  }
+
+  to {
+    height: 35px;
+  }
+}
+
+/* Romantic note */
+
+.romantic-note {
+  max-width: 480px;
+  margin: 20px auto;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  line-height: 1.6;
+  color: #2d7894;
+}
+
+/* Home button */
+
+.home-area {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 15px 20px 45px;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 12px 25px;
+  border: 1px solid #ffffffa0;
+  border-radius: 30px;
+  color: #fff;
+  background: #247e9d;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.home-button:hover {
+  background: #165e7c;
+  transform: translateY(-3px);
+}
+
+footer {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 0 20px 25px;
+  color: #eaffff;
+  font-family: 'Caveat', cursive;
+  font-size: 21px;
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+  .player-card {
+    padding: 23px 18px;
+  }
+
+  .album-art {
+    width: 165px;
+    height: 165px;
+  }
+
+  .song-title {
+    font-size: 22px;
+  }
+
+  .romantic-note {
+    font-size: 21px;
+  }
+
+  .ocean {
+    height: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sky background -->
+<div class="sky">
+  <div class="sun-glow"></div>
+
+  <div class="cloud cloud-one"></div>
+  <div class="cloud cloud-two"></div>
+  <div class="cloud cloud-three"></div>
+</div>
+
+<!-- Floating bubbles -->
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+
+<!-- Ocean waves -->
+<div class="ocean">
+  <div class="wave wave-one"></div>
+  <div class="wave wave-two"></div>
+  <div class="wave wave-three"></div>
+</div>
+
+<header>
+  <div class="eyebrow">A song for my favourite person</div>
+
+  <h1>Our Little Melody 🌊</h1>
+
+  <div class="subtitle">
+    If my heart had a soundtrack,<br>
+    every song would remind me of you.
+  </div>
+</header>
+
+<section class="player-area">
+
+  <div class="player-card">
+
+    <!-- Album artwork -->
+    <div class="album-art" id="albumArt">
+      <div class="album-heart">♡</div>
+    </div>
+
+    <h2 class="song-title" id="songTitle">
+      A Song For Mau
+    </h2>
+
+    <p class="song-subtitle">
+      Just you, me & this melody
+    </p>
+
+    <!-- Audio progress -->
+    <div class="progress-area">
+
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="time-row">
+        <span id="currentTime">0:00</span>
+        <span id="duration">0:00</span>
+      </div>
+
+    </div>
+
+    <!-- Music controls -->
+    <div class="controls">
+
+      <button class="secondary-button" onclick="restartSong()" aria-label="Restart song">
+        ↺
+      </button>
+
+      <button class="play-button" id="playButton" onclick="togglePlay()" aria-label="Play song">
+        ▶
+      </button>
+
+      <button class="secondary-button" onclick="toggleMute()" id="muteButton" aria-label="Mute song">
+        ♪
+      </button>
+
+    </div>
+
+    <!-- Animated sound bars -->
+    <div class="visualizer" id="visualizer">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <p style="font-size: 11px; color: #6794a5;">
+      A little melody, a lot of love ♡
+    </p>
+
+  </div>
+
+  <div class="romantic-note">
+    "Somewhere between the waves and the sky,<br>
+    my heart found its favourite melody — you."
+  </div>
+
+</section>
+
+<div class="home-area">
+  <a href="index.html" class="home-button">
+    🏠 Back to Birthday Home
+  </a>
+</div>
+
+<footer>
+  Every beat reminds me of you. ♡
+</footer>
+
+<!--
+  Add your chosen song as song.mp3 in the same GitHub repository folder.
+  You can change the filename below if your audio file has a different name.
+-->
+
+<audio id="song" preload="metadata">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const song = document.getElementById("song");
+const playButton = document.getElementById("playButton");
+const progressBar = document.getElementById("progressBar");
+const progressFill = document.getElementById("progressFill");
+const currentTimeDisplay = document.getElementById("currentTime");
+const durationDisplay = document.getElementById("duration");
+const visualizer = document.getElementById("visualizer");
+const albumArt = document.getElementById("albumArt");
+const muteButton = document.getElementById("muteButton");
+
+/* Format time as minutes and seconds */
+
+function formatTime(time) {
+  if (!isFinite(time)) return "0:00";
+
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+
+  return minutes + ":" + String(seconds).padStart(2, "0");
+}
+
+/* Play or pause */
+
+function togglePlay() {
+
+  if (song.paused) {
+
+    song.play()
+      .then(() => {
+        playButton.textContent = "❚❚";
+        visualizer.classList.add("playing");
+        albumArt.classList.add("playing");
+      })
+      .catch(() => {
+        alert("Please add your song file named song.mp3 to the repository first.");
+      });
+
+  } else {
+
+    song.pause();
+
+    playButton.textContent = "▶";
+    visualizer.classList.remove("playing");
+    albumArt.classList.remove("playing");
+
+  }
+
+}
+
+/* Restart song */
+
+function restartSong() {
+
+  song.currentTime = 0;
+
+  song.play()
+    .then(() => {
+      playButton.textContent = "❚❚";
+      visualizer.classList.add("playing");
+      albumArt.classList.add("playing");
+    })
+    .catch(() => {
+      alert("Please add your song file named song.mp3 to the repository first.");
+    });
+
+}
+
+/* Mute and unmute */
+
+function toggleMute() {
+
+  song.muted = !song.muted;
+
+  muteButton.textContent = song.muted ? "🔇" : "♪";
+
+}
+
+/* Update progress */
+
+song.addEventListener("timeupdate", () => {
+
+  if (song.duration) {
+
+    const percentage = (song.currentTime / song.duration) * 100;
+
+    progressFill.style.width = percentage + "%";
+
+    currentTimeDisplay.textContent = formatTime(song.currentTime);
+    durationDisplay.textContent = formatTime(song.duration);
+
+  }
+
+});
+
+/* Load duration when audio metadata is available */
+
+song.addEventListener("loadedmetadata", () => {
+
+  durationDisplay.textContent = formatTime(song.duration);
+
+});
+
+/* Click on progress bar to seek */
+
+progressBar.addEventListener("click", (event) => {
+
+  if (!song.duration) return;
+
+  const rect = progressBar.getBoundingClientRect();
+
+  const clickPosition = event.clientX - rect.left;
+
+  const percentage = clickPosition / rect.width;
+
+  song.currentTime = percentage * song.duration;
+
+});
+
+/* Reset controls when song ends */
+
+song.addEventListener("ended", () => {
+
+  playButton.textContent = "▶";
+  visualizer.classList.remove("playing");
+  albumArt.classList.remove("playing");
+
+});
+
+/* Reset controls when paused */
+
+song.addEventListener("pause", () => {
+
+  playButton.textContent = "▶";
+  visualizer.classList.remove("playing");
+  albumArt.classList.remove("playing");
+
+});
+
+</script>
+
+</body>
+</html>
