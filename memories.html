@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +31,6 @@ body {
 }
 
 /* Vintage paper texture */
-
 body::before {
   content: "";
   position: fixed;
@@ -46,7 +44,6 @@ body::before {
 }
 
 /* Hero section */
-
 header {
   padding: 60px 20px 45px;
   text-align: center;
@@ -90,7 +87,6 @@ h1 {
 }
 
 /* Floating decorations */
-
 .decor {
   position: absolute;
   font-size: 25px;
@@ -131,7 +127,6 @@ h1 {
 }
 
 /* Section headings */
-
 .section-title {
   text-align: center;
   margin: 55px 15px 10px;
@@ -149,7 +144,6 @@ h1 {
 }
 
 /* Scrapbook */
-
 .scrapbook {
   width: min(1050px, 92%);
   margin: 0 auto;
@@ -186,37 +180,25 @@ h1 {
   --rotation: 1.5deg;
 }
 
-/* Photo placeholders */
-
+/* Actual photos */
 .photo-placeholder {
   width: 100%;
   aspect-ratio: 1 / 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   overflow: hidden;
   background: linear-gradient(135deg, #dbe4d3, #f1e6d5);
-  color: #73836a;
-  text-align: center;
-  padding: 15px;
   position: relative;
 }
 
-.photo-placeholder .emoji {
-  font-size: 48px;
-  margin-bottom: 12px;
+.photo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
 }
 
-.photo-placeholder span {
-  font-family: 'Caveat', cursive;
-  font-size: 24px;
-}
-
-.photo-placeholder small {
-  margin-top: 8px;
-  font-size: 11px;
-  color: #819079;
+.polaroid:hover .photo-placeholder img {
+  transform: scale(1.04);
 }
 
 .caption {
@@ -230,8 +212,7 @@ h1 {
   color: #775e48;
 }
 
-/* Individual placeholder colors */
-
+/* Individual photo backgrounds */
 .polaroid:nth-child(2) .photo-placeholder {
   background: linear-gradient(135deg, #ead9c6, #f6ebda);
 }
@@ -253,7 +234,6 @@ h1 {
 }
 
 /* Washi tape */
-
 .tape {
   position: absolute;
   top: -10px;
@@ -266,7 +246,6 @@ h1 {
 }
 
 /* Story timeline */
-
 .story-section {
   margin-top: 25px;
   padding: 45px 20px 60px;
@@ -320,7 +299,6 @@ h1 {
 }
 
 /* Secret note */
-
 .note-section {
   text-align: center;
   padding: 60px 20px;
@@ -362,7 +340,6 @@ h1 {
 }
 
 /* Home button */
-
 .home-button {
   display: inline-block;
   margin: 10px 0 35px;
@@ -389,7 +366,6 @@ footer {
 }
 
 /* Reveal animation */
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -402,7 +378,6 @@ footer {
 }
 
 /* Mobile layout */
-
 @media (max-width: 750px) {
   .scrapbook {
     grid-template-columns: repeat(2, 1fr);
@@ -415,14 +390,6 @@ footer {
 
   .caption {
     font-size: 20px;
-  }
-
-  .photo-placeholder .emoji {
-    font-size: 35px;
-  }
-
-  .photo-placeholder span {
-    font-size: 19px;
   }
 
   .decor {
@@ -477,62 +444,56 @@ footer {
 
 <div class="scrapbook">
 
+  <!-- PHOTO 1 -->
   <div class="polaroid">
     <div class="tape"></div>
     <div class="photo-placeholder">
-      <div class="emoji">📷</div>
-      <span>Our First Picture</span>
-      <small>Our memory goes here</small>
+      <img src="memories/memories1.jpg" alt="Our first picture">
     </div>
     <div class="caption">The beginning of us ♡</div>
   </div>
 
+  <!-- PHOTO 2 -->
   <div class="polaroid">
     <div class="tape"></div>
     <div class="photo-placeholder">
-      <div class="emoji">🌷</div>
-      <span>Our Favourite Day</span>
-      <small>Our memory goes here</small>
+      <img src="memories/memories2.jpg" alt="Our favourite day">
     </div>
     <div class="caption">A day to remember</div>
   </div>
 
+  <!-- PHOTO 3 -->
   <div class="polaroid">
     <div class="tape"></div>
     <div class="photo-placeholder">
-      <div class="emoji">☕</div>
-      <span>Little Adventures</span>
-      <small>Our memory goes here</small>
+      <img src="memories/memories3.jpg" alt="Our little adventures">
     </div>
     <div class="caption">Anywhere with you</div>
   </div>
 
+  <!-- PHOTO 4 -->
   <div class="polaroid">
     <div class="tape"></div>
     <div class="photo-placeholder">
-      <div class="emoji">🌅</div>
-      <span>Our Happy Place</span>
-      <small>Our memory goes here</small>
+      <img src="memories/memories4.jpg" alt="Our happy place">
     </div>
     <div class="caption">My favourite view</div>
   </div>
 
+  <!-- PHOTO 5 -->
   <div class="polaroid">
     <div class="tape"></div>
     <div class="photo-placeholder">
-      <div class="emoji">💌</div>
-      <span>A Silly Moment</span>
-      <small>Our memory goes here</small>
+      <img src="memories/memories5.jpg" alt="A silly moment together">
     </div>
     <div class="caption">Just being us</div>
   </div>
 
+  <!-- PHOTO 6 -->
   <div class="polaroid">
     <div class="tape"></div>
     <div class="photo-placeholder">
-      <div class="emoji">✨</div>
-      <span>My Favourite Memory</span>
-      <small>Our memory goes here</small>
+      <img src="memories/memories6.jpg" alt="My favourite memory">
     </div>
     <div class="caption">And many more to come</div>
   </div>
