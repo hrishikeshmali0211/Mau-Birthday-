@@ -8,10 +8,22 @@
 <title>Our Little Universe 🌌</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Caveat:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Caveat:wght@500;600;700&display=swap');
+
+:root {
+  --night: #080b22;
+  --purple: #8f7aff;
+  --lavender: #d5c9ff;
+  --pink: #ffb6d9;
+  --cyan: #9cecff;
+}
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -24,7 +36,68 @@ body {
     radial-gradient(ellipse at 50% 40%, #29245b 0%, #151638 35%, #090d24 75%, #050817 100%);
 }
 
-/* Starry sky */
+/* =========================
+   GALAXY BACKGROUND
+========================= */
+
+.space-background {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -5;
+  background:
+    radial-gradient(ellipse at 20% 30%, #6940a52b, transparent 40%),
+    radial-gradient(ellipse at 80% 60%, #3154a82b, transparent 45%),
+    #070a20;
+}
+
+/* Moving nebula clouds */
+
+.nebula {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  filter: blur(65px);
+  opacity: 0.5;
+  border-radius: 50%;
+}
+
+.nebula-one {
+  background:
+    radial-gradient(ellipse at 25% 40%, #8535c65a, transparent 35%),
+    radial-gradient(ellipse at 70% 55%, #3e52bb55, transparent 40%);
+  animation: nebulaDrift 28s ease-in-out infinite alternate;
+}
+
+.nebula-two {
+  background:
+    radial-gradient(ellipse at 60% 20%, #d14f9a30, transparent 35%),
+    radial-gradient(ellipse at 35% 75%, #5146d84c, transparent 40%);
+  animation: nebulaDriftTwo 35s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaDrift {
+  0% {
+    transform: translate(-5%, -2%) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translate(8%, 5%) rotate(18deg) scale(1.15);
+  }
+}
+
+@keyframes nebulaDriftTwo {
+  0% {
+    transform: translate(5%, 3%) rotate(-10deg) scale(1.1);
+  }
+  100% {
+    transform: translate(-8%, -4%) rotate(15deg) scale(0.95);
+  }
+}
+
+/* Star layers */
 
 #stars,
 #stars2,
@@ -32,6 +105,7 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
+  z-index: -3;
 }
 
 #stars {
@@ -68,11 +142,63 @@ body {
 }
 
 @keyframes twinkle {
-  from { opacity: 0.35; }
+  from { opacity: 0.3; }
   to { opacity: 1; }
 }
 
-/* Header */
+/* =========================
+   SHOOTING STARS
+========================= */
+
+.shooting-star {
+  position: fixed;
+  top: -100px;
+  left: 0;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, #ffffff, #c7b7ff, transparent);
+  opacity: 0;
+  transform: rotate(-35deg);
+  pointer-events: none;
+  z-index: -1;
+  filter: drop-shadow(0 0 5px #bbaaff);
+}
+
+.shooting-star::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 10px white;
+}
+
+.shooting-star.active {
+  animation: shooting 1.5s ease-out forwards;
+}
+
+@keyframes shooting {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(-35deg);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(110vw, 75vh) rotate(-35deg);
+  }
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header {
   position: relative;
@@ -105,16 +231,18 @@ h1 {
   line-height: 1.8;
 }
 
-/* Universe scene */
+/* =========================
+   UNIVERSE SCENE
+========================= */
 
 .universe {
   position: relative;
   width: min(100%, 900px);
-  height: 500px;
-  margin: 10px auto 0;
+  height: 540px;
+  margin: 0 auto;
 }
 
-/* Planet orbit */
+/* Planet orbit rings */
 
 .orbit {
   position: absolute;
@@ -122,24 +250,18 @@ h1 {
   top: 50%;
   width: 370px;
   height: 370px;
-  border: 1px solid #b8aaff22;
+  border: 1px solid #b8aaff30;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  animation: orbitPulse 7s ease-in-out infinite;
 }
 
-.orbit2 {
+.orbit-two {
   width: 500px;
   height: 500px;
-  border-color: #b8aaff14;
+  border-color: #b8aaff18;
 }
 
-@keyframes orbitPulse {
-  0%, 100% { opacity: 0.45; }
-  50% { opacity: 1; }
-}
-
-/* Main glowing moon */
+/* Main moon */
 
 .moon {
   position: absolute;
@@ -158,6 +280,7 @@ h1 {
   cursor: pointer;
   animation: moonFloat 5s ease-in-out infinite;
   transition: transform 0.5s, box-shadow 0.5s;
+  z-index: 5;
 }
 
 .moon:hover {
@@ -198,55 +321,190 @@ h1 {
   50% { margin-top: -13px; }
 }
 
-/* Small planets */
+/* =========================
+   ORBITING PLANETS
+========================= */
 
-.planet {
+.planet-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: orbitSpin linear infinite;
+}
+
+.planet-orbit-one {
+  width: 270px;
+  height: 270px;
+  animation-duration: 18s;
+}
+
+.planet-orbit-two {
+  width: 410px;
+  height: 410px;
+  animation-duration: 30s;
+  animation-direction: reverse;
+}
+
+.planet-orbit-three {
+  width: 490px;
+  height: 490px;
+  animation-duration: 42s;
+}
+
+.orbiting-planet {
   position: absolute;
   border-radius: 50%;
-  animation: planetFloat 6s ease-in-out infinite;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.planet1 {
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(135deg, #ffdbab, #d986a5, #7f5aa7);
-  left: 20%;
-  top: 30%;
-  box-shadow: 0 0 25px #d986a550;
+.planet-one {
+  width: 27px;
+  height: 27px;
+  background: linear-gradient(135deg, #ffc9e6, #d47bd2, #7e62c8);
+  box-shadow: 0 0 20px #ffb5e780;
 }
 
-.planet2 {
-  width: 30px;
-  height: 30px;
-  background: linear-gradient(135deg, #8df0e2, #5085cf);
-  right: 18%;
-  top: 58%;
-  box-shadow: 0 0 20px #6cd4ff50;
-  animation-delay: -2s;
+.planet-two {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #a5f4ff, #5e9ddd, #5255a6);
+  box-shadow: 0 0 25px #7bdcff70;
 }
 
-.planet3 {
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #f8b4d0, #a18bff);
-  left: 25%;
-  bottom: 18%;
-  box-shadow: 0 0 20px #f8b4d050;
-  animation-delay: -4s;
+.planet-three {
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #ffe8ae, #f5a76e);
+  box-shadow: 0 0 18px #ffca8b90;
 }
 
-@keyframes planetFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+@keyframes orbitSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Small stars */
+/* =========================
+   HEART CONSTELLATION
+========================= */
 
-.star {
+.heart-constellation {
   position: absolute;
-  color: #fff;
+  width: 160px;
+  height: 130px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.heart-constellation.show {
+  opacity: 1;
+}
+
+.heart-constellation svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.heart-line {
+  fill: none;
+  stroke: #ffb9e6;
+  stroke-width: 1.5;
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  filter: drop-shadow(0 0 5px #ffb9e6);
+}
+
+.heart-constellation.show .heart-line {
+  animation: drawHeart 2s ease forwards;
+}
+
+.heart-dot {
+  fill: #fff;
+  filter: drop-shadow(0 0 6px #ffc6ec);
+  opacity: 0;
+}
+
+.heart-constellation.show .heart-dot {
+  animation: starAppear 0.5s ease forwards;
+}
+
+@keyframes drawHeart {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes starAppear {
+  to { opacity: 1; }
+}
+
+/* =========================
+   MAU WRITTEN IN STARS
+========================= */
+
+.name-in-stars {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  z-index: 7;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.name-in-stars.show {
+  opacity: 1;
+}
+
+.name-in-stars span {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(42px, 8vw, 76px);
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: #fff3ff;
+  text-shadow:
+    0 0 8px #fff,
+    0 0 20px #ffb9e6,
+    0 0 45px #c69aff,
+    0 0 75px #8f7aff;
+  animation: nameGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes nameGlow {
+  from {
+    text-shadow:
+      0 0 8px #fff,
+      0 0 20px #ffb9e6,
+      0 0 45px #c69aff;
+  }
+
+  to {
+    text-shadow:
+      0 0 15px #fff,
+      0 0 35px #ffb9e6,
+      0 0 70px #c69aff,
+      0 0 100px #8f7aff;
+  }
+}
+
+/* Scene stars */
+
+.scene-star {
+  position: absolute;
+  color: white;
   font-size: 18px;
   animation: starPulse 2.5s ease-in-out infinite;
+  z-index: 4;
 }
 
 .star1 { top: 18%; left: 35%; }
@@ -261,17 +519,20 @@ h1 {
     opacity: 0.4;
     transform: scale(0.8);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.3);
   }
 }
 
-/* Message */
+/* =========================
+   MESSAGE
+========================= */
 
 .message-area {
   position: relative;
-  z-index: 3;
+  z-index: 10;
   text-align: center;
   padding: 0 20px 30px;
 }
@@ -317,13 +578,14 @@ h1 {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Home */
+/* Home button */
 
 .home-area {
   text-align: center;
@@ -362,7 +624,7 @@ footer {
 
 @media (max-width: 600px) {
   .universe {
-    height: 390px;
+    height: 420px;
   }
 
   .orbit {
@@ -370,7 +632,7 @@ footer {
     height: 280px;
   }
 
-  .orbit2 {
+  .orbit-two {
     width: 350px;
     height: 350px;
   }
@@ -380,20 +642,40 @@ footer {
     height: 125px;
   }
 
-  .planet1 {
-    left: 8%;
+  .planet-orbit-one {
+    width: 220px;
+    height: 220px;
   }
 
-  .planet2 {
-    right: 7%;
+  .planet-orbit-two {
+    width: 320px;
+    height: 320px;
   }
 
-  .planet3 {
-    left: 15%;
+  .planet-orbit-three {
+    width: 350px;
+    height: 350px;
+  }
+
+  .heart-constellation {
+    width: 125px;
+    height: 105px;
   }
 
   .message-card {
     padding: 25px 20px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }
 </style>
@@ -401,9 +683,20 @@ footer {
 
 <body>
 
+<!-- Galaxy background -->
+<div class="space-background">
+  <div class="nebula nebula-one"></div>
+  <div class="nebula nebula-two"></div>
+</div>
+
+<!-- Star layers -->
 <div id="stars"></div>
 <div id="stars2"></div>
 <div id="stars3"></div>
+
+<!-- Shooting star elements -->
+<div class="shooting-star" id="shootingStar"></div>
+<div class="shooting-star" id="shootingStarTwo"></div>
 
 <header>
   <div class="eyebrow">A little universe made for you</div>
@@ -418,21 +711,67 @@ footer {
 
 <section class="universe">
 
-  <div class="orbit orbit2"></div>
+  <!-- Orbit rings -->
+  <div class="orbit orbit-two"></div>
   <div class="orbit"></div>
 
-  <div class="planet planet1"></div>
-  <div class="planet planet2"></div>
-  <div class="planet planet3"></div>
+  <!-- Orbiting planets -->
+  <div class="planet-orbit planet-orbit-one">
+    <div class="orbiting-planet planet-one"></div>
+  </div>
 
-  <span class="star star1">✦</span>
-  <span class="star star2">✧</span>
-  <span class="star star3">✦</span>
-  <span class="star star4">✧</span>
-  <span class="star star5">✦</span>
-  <span class="star star6">✧</span>
+  <div class="planet-orbit planet-orbit-two">
+    <div class="orbiting-planet planet-two"></div>
+  </div>
 
-  <div class="moon" onclick="revealMessage()" aria-label="Reveal a message"></div>
+  <div class="planet-orbit planet-orbit-three">
+    <div class="orbiting-planet planet-three"></div>
+  </div>
+
+  <!-- Scene stars -->
+  <span class="scene-star star1">✦</span>
+  <span class="scene-star star2">✧</span>
+  <span class="scene-star star3">✦</span>
+  <span class="scene-star star4">✧</span>
+  <span class="scene-star star5">✦</span>
+  <span class="scene-star star6">✧</span>
+
+  <!-- Main moon -->
+  <div
+    class="moon"
+    id="moon"
+    onclick="revealMessage()"
+    aria-label="Tap the moon to reveal a message"
+    role="button"
+    tabindex="0">
+  </div>
+
+  <!-- Heart constellation -->
+  <div class="heart-constellation" id="heartConstellation">
+
+    <svg viewBox="0 0 160 130" aria-hidden="true">
+
+      <path
+        class="heart-line"
+        d="M80 108 L35 65 L20 38 L45 18 L80 48 L115 18 L140 38 L125 65 Z"/>
+
+      <circle class="heart-dot" cx="80" cy="108" r="3"/>
+      <circle class="heart-dot" cx="35" cy="65" r="3"/>
+      <circle class="heart-dot" cx="20" cy="38" r="3"/>
+      <circle class="heart-dot" cx="45" cy="18" r="3"/>
+      <circle class="heart-dot" cx="80" cy="48" r="3"/>
+      <circle class="heart-dot" cx="115" cy="18" r="3"/>
+      <circle class="heart-dot" cx="140" cy="38" r="3"/>
+      <circle class="heart-dot" cx="125" cy="65" r="3"/>
+
+    </svg>
+
+  </div>
+
+  <!-- Mau written in glowing stars -->
+  <div class="name-in-stars" id="nameInStars">
+    <span>Mau ♡</span>
+  </div>
 
 </section>
 
@@ -482,18 +821,125 @@ footer {
 </footer>
 
 <script>
-function revealMessage() {
-  const card = document.getElementById("messageCard");
-  const hint = document.getElementById("tapHint");
 
-  card.classList.add("show");
+/* =========================
+   REVEAL THE COSMIC SURPRISE
+========================= */
+
+let messageRevealed = false;
+
+function revealMessage() {
+
+  if (messageRevealed) return;
+
+  messageRevealed = true;
+
+  const messageCard = document.getElementById("messageCard");
+  const hint = document.getElementById("tapHint");
+  const heart = document.getElementById("heartConstellation");
+  const name = document.getElementById("nameInStars");
+  const moon = document.getElementById("moon");
+
+  // Show the birthday message
+  messageCard.classList.add("show");
   hint.style.display = "none";
 
-  card.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
+  // Make the moon glow brighter
+  moon.style.boxShadow =
+    "0 0 45px #ffffffaa, 0 0 100px #c69affaa, 0 0 160px #8f7aff70";
+
+  // Show heart constellation
+  setTimeout(() => {
+    heart.classList.add("show");
+  }, 500);
+
+  // Reveal Mau's name in stars
+  setTimeout(() => {
+    name.classList.add("show");
+  }, 1800);
+
+  // Trigger a shooting star
+  setTimeout(() => {
+    shootStar();
+  }, 300);
+
+  // Scroll to message
+  setTimeout(() => {
+    messageCard.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }, 700);
+
 }
+
+/* =========================
+   SHOOTING STAR ANIMATION
+========================= */
+
+function shootStar() {
+
+  const star = document.getElementById("shootingStar");
+
+  // Random starting position
+  star.style.left = (Math.random() * 65) + "%";
+  star.style.top = (Math.random() * 20) + "%";
+
+  // Restart animation
+  star.classList.remove("active");
+
+  void star.offsetWidth;
+
+  star.classList.add("active");
+
+}
+
+/* =========================
+   RANDOM SHOOTING STARS
+========================= */
+
+function randomShootingStar() {
+
+  // Randomly select one of the shooting stars
+  const starId = Math.random() > 0.5
+    ? "shootingStar"
+    : "shootingStarTwo";
+
+  const star = document.getElementById(starId);
+
+  star.style.left = (Math.random() * 65) + "%";
+  star.style.top = (Math.random() * 20) + "%";
+
+  star.classList.remove("active");
+
+  void star.offsetWidth;
+
+  star.classList.add("active");
+
+}
+
+// A shooting star occasionally appears in the galaxy
+setInterval(() => {
+
+  if (Math.random() > 0.45) {
+    randomShootingStar();
+  }
+
+}, 4500);
+
+/* =========================
+   KEYBOARD SUPPORT
+========================= */
+
+document.getElementById("moon").addEventListener("keydown", function(event) {
+
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    revealMessage();
+  }
+
+});
+
 </script>
 
 </body>
