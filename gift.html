@@ -4,8 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>A Little Gift for Mau 🎁</title>
+<title>A Special Gift for Mau 💖</title>
 
 <style>
 * {
@@ -15,519 +14,429 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Georgia, serif;
-  color: #8b3a62;
-  background: linear-gradient(135deg, #ffe0ec, #fff5f8, #ffd1e3);
+  font-family: 'Georgia', serif;
+  text-align: center;
+  color: #b83265;
+  background: linear-gradient(135deg, #ffe0ec, #fff4f8, #ffd6e6);
   overflow-x: hidden;
 }
 
 .container {
+  padding: 35px 15px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 25px 15px;
 }
 
 h1 {
-  font-size: clamp(28px, 6vw, 42px);
+  font-size: clamp(25px, 5vw, 42px);
+  animation: heartbeat 1.5s infinite;
 }
 
-p {
+.subtitle {
   font-size: 18px;
-  line-height: 1.7;
+  color: #d45c8c;
+}
+
+.gift-area {
+  position: relative;
+  margin: 70px auto 35px;
+  width: 220px;
+  height: 220px;
 }
 
 .gift {
-  position: relative;
-  width: 180px;
-  height: 150px;
-  margin: 50px auto 30px;
-  cursor: pointer;
-  animation: bounce 1.8s infinite;
-}
-
-.box {
   position: absolute;
-  width: 180px;
-  height: 115px;
   bottom: 0;
-  background: #ff6fa7;
-  border-radius: 8px;
-  box-shadow: 0 12px 20px #d77b9e55;
+  left: 10px;
+  width: 200px;
+  height: 145px;
+  background: #ff6fa5;
+  border-radius: 12px;
+  box-shadow: 0 12px 25px #e78aaa66;
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
-.box::before {
+.gift:hover {
+  transform: scale(1.05);
+}
+
+.gift::before {
   content: "";
   position: absolute;
-  left: 75px;
-  width: 30px;
+  left: 82px;
+  width: 36px;
   height: 100%;
-  background: #ffe5a3;
+  background: #ffe9a8;
 }
 
 .lid {
   position: absolute;
-  width: 200px;
-  height: 35px;
-  left: -10px;
-  top: 0;
-  background: #ff4f91;
-  border-radius: 8px;
-  transition: transform 0.8s ease;
+  bottom: 135px;
+  left: 0;
+  width: 220px;
+  height: 45px;
+  background: #f94f91;
+  border-radius: 10px;
   transform-origin: left bottom;
-  z-index: 2;
+  transition: transform 0.8s ease;
+  z-index: 3;
 }
 
 .lid::before {
   content: "";
   position: absolute;
-  left: 85px;
-  width: 30px;
-  height: 35px;
-  background: #ffe5a3;
+  left: 92px;
+  width: 36px;
+  height: 100%;
+  background: #ffe9a8;
 }
 
 .bow {
   position: absolute;
-  top: -38px;
-  left: 65px;
+  bottom: 170px;
+  left: 85px;
   font-size: 50px;
-  transition: transform 0.8s ease;
-  z-index: 3;
+  z-index: 4;
+  transition: transform 0.8s;
 }
 
-.gift.open .lid {
-  transform: rotate(-120deg) translateY(-30px);
-}
-
-.gift.open .bow {
-  transform: translateY(-80px) rotate(25deg);
-}
-
-.gift.open {
-  animation: none;
-}
-
-button, .nav {
-  display: inline-block;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-size: 16px;
-  background: #d94f8b;
+.gift-text {
+  position: absolute;
+  bottom: 45px;
+  width: 100%;
   color: white;
-  text-decoration: none;
-  cursor: pointer;
-  margin: 8px;
+  font-size: 17px;
+  font-weight: bold;
+  z-index: 2;
 }
 
-button:hover, .nav:hover {
-  background: #b93870;
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  background: #f94f91;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #e78aaa66;
+}
+
+button:hover {
+  background: #e83b80;
 }
 
 .message {
   display: none;
-  width: min(92%, 520px);
+  max-width: 600px;
+  margin: 30px auto;
   padding: 25px;
-  margin: 15px auto;
-  background: #ffffffd9;
-  border-radius: 20px;
-  box-shadow: 0 10px 35px #c86d9630;
+  border-radius: 25px;
+  background: #ffffffc9;
+  box-shadow: 0 10px 30px #e78aaa44;
+  animation: appear 1s ease forwards;
 }
 
-.message.show {
-  display: block;
-  animation: fadeIn 1.2s ease;
+.message h2 {
+  font-size: 30px;
 }
 
-#intro.hide {
-  display: none;
+.message p {
+  font-size: 19px;
+  line-height: 1.7;
 }
 
-#homeButton {
-  display: none;
-}
-
-#homeButton.show {
+.home {
   display: inline-block;
+  margin-top: 25px;
+  color: #b83265;
+  text-decoration: none;
+  border: 2px solid #f94f91;
+  padding: 10px 22px;
+  border-radius: 25px;
 }
 
-/* Celebration layer */
-
-#celebration {
+.heart {
   position: fixed;
-  inset: 0;
+  bottom: -30px;
   pointer-events: none;
-  overflow: hidden;
+  animation: floatUp linear forwards;
   z-index: 10;
 }
 
-.burst {
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  font-size: var(--size);
-  animation: burst 2.4s ease-out forwards;
-  animation-delay: var(--delay);
-  opacity: 0;
+.spark {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 20;
+  animation: sparkle 1.2s ease-out forwards;
 }
 
-@keyframes burst {
+.firework {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 30;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-115vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
   0% {
-    transform: translate(0, 0) scale(0.2) rotate(0deg);
-    opacity: 0;
-  }
-
-  15% {
+    transform: scale(0);
     opacity: 1;
   }
-
-  75% {
-    opacity: 1;
-  }
-
   100% {
-    transform: translate(var(--dx), var(--dy)) scale(1.3) rotate(180deg);
+    transform: scale(2.5);
     opacity: 0;
   }
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-12px);
-  }
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
 }
 
-@keyframes fadeIn {
+@keyframes appear {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(30px) scale(0.9);
   }
-
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
+
+.open .lid {
+  transform: rotate(-125deg) translateY(-30px);
+}
+
+.open .bow {
+  transform: translateY(-100px) rotate(30deg);
+}
+
+.open .gift {
+  animation: giftBounce 1s ease;
+}
+
+@keyframes giftBounce {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-25px); }
+  60% { transform: translateY(0); }
+  80% { transform: translateY(-12px); }
+}
+
 </style>
 </head>
 
 <body>
 
-<div id="celebration"></div>
-
 <div class="container">
 
-  <!-- Gift screen -->
+  <h1>For My Beautiful Mau 💖</h1>
+  <p class="subtitle">A little gift filled with all my love...</p>
 
-  <div id="intro">
-
-    <h1>A little gift for you, Mau 🎁</h1>
-
-    <p>Something special is waiting inside…</p>
-    <p>Tap the gift to open it 💗</p>
+  <div class="gift-area" id="giftArea">
 
     <div class="gift" id="gift" onclick="openGift()">
-
-      <div class="bow">🎀</div>
-      <div class="lid"></div>
-      <div class="box"></div>
-
+      <div class="gift-text">For Mau 💕</div>
     </div>
 
-    <p>Made with lots and lots of love ✨</p>
+    <div class="lid" id="lid"></div>
+    <div class="bow" id="bow">🎀</div>
 
   </div>
 
-  <!-- Birthday letter -->
+  <button id="openButton" onclick="openGift()">
+    Open Your Gift 🎁
+  </button>
 
   <div class="message" id="message">
-
-    <h1>Happy Birthday, my Mau! 💖</h1>
-
-    <p>
-      If I could give you one thing in this world,
-      it would be the ability to see yourself through my eyes.
-      Then you would know just how special,
-      beautiful, and loved you truly are.
-    </p>
+    <h2>Happy Birthday, My Love! 🎂💖</h2>
 
     <p>
-      You make my world brighter in ways I can't explain.
-      I hope today brings you as much happiness
-      as you bring into my life. 💕
+      My dearest Mau,<br><br>
+      You are the most beautiful part of my life.
+      Every moment with you is a gift, and today
+      I hope you feel as special as you make me feel
+      every single day.<br><br>
+      I love you more than words can ever express.
+      Happy Birthday, my love! 💕
     </p>
 
-    <h2>And this is only the beginning… ✨</h2>
-
-    <a class="nav" href="memories.html">
-      Next surprise →
-    </a>
-
+    <div style="font-size:35px">
+      💖 💗 💖
+    </div>
   </div>
 
-  <!-- Home button -->
-
-  <a class="nav" id="homeButton" href="index.html">
-    ← Home
-  </a>
+  <a class="home" href="index.html">🏠 Back to Home</a>
 
 </div>
 
 <script>
-
-let opened = false;
-let audioContext;
-
-/* Open gift */
+let isOpened = false;
 
 function openGift() {
+  if (isOpened) return;
+  isOpened = true;
 
-  if (opened) return;
+  document.getElementById("giftArea").classList.add("open");
 
-  opened = true;
+  document.getElementById("openButton").style.display = "none";
 
-  const gift = document.getElementById("gift");
-  const intro = document.getElementById("intro");
-  const message = document.getElementById("message");
-  const homeButton = document.getElementById("homeButton");
+  // Start magical effects
+  startFireworks();
 
-  // Open the gift box
-  gift.classList.add("open");
-
-  // Start celebration effects and sounds
-  createFireworks();
-  playCelebrationSounds();
-
-  // After 3 seconds, show the letter and Home button
+  // Show the birthday message after the animation
   setTimeout(() => {
-
-    intro.classList.add("hide");
-    message.classList.add("show");
-    homeButton.classList.add("show");
-
-  }, 3000);
-
-  // Clear fireworks after the celebration
-  setTimeout(() => {
-
-    document.getElementById("celebration").innerHTML = "";
-
-  }, 5500);
-
+    document.getElementById("message").style.display = "block";
+    createHearts(30);
+  }, 2200);
 }
 
-/* Firework sounds and sparkle sounds */
-
-function playCelebrationSounds() {
-
-  try {
-
-    audioContext = new (
-      window.AudioContext ||
-      window.webkitAudioContext
-    )();
-
-    if (audioContext.state === "suspended") {
-      audioContext.resume();
-    }
-
-    // Firework sounds
-    for (let i = 0; i < 5; i++) {
-
-      setTimeout(() => {
-        playFirework();
-      }, i * 450);
-
-    }
-
-    // Magical sparkle sounds
-    for (let i = 0; i < 12; i++) {
-
-      setTimeout(() => {
-        playSparkle();
-      }, 1800 + i * 180);
-
-    }
-
-  } catch (error) {
-
-    console.log("Audio could not be played:", error);
-
-  }
-
-}
-
-/* Firework / cracker burst sound */
-
-function playFirework() {
-
-  if (!audioContext) return;
-
-  const duration = 0.45;
-  const bufferSize = audioContext.sampleRate * duration;
-
-  const buffer = audioContext.createBuffer(
-    1,
-    bufferSize,
-    audioContext.sampleRate
-  );
-
-  const data = buffer.getChannelData(0);
-
-  // Generate a short burst of noise
-  for (let i = 0; i < bufferSize; i++) {
-
-    data[i] =
-      (Math.random() * 2 - 1) *
-      Math.pow(1 - i / bufferSize, 2);
-
-  }
-
-  const source = audioContext.createBufferSource();
-  source.buffer = buffer;
-
-  const filter = audioContext.createBiquadFilter();
-  filter.type = "lowpass";
-  filter.frequency.value = 1800;
-
-  const gain = audioContext.createGain();
-
-  gain.gain.setValueAtTime(
-    0.0001,
-    audioContext.currentTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    0.35,
-    audioContext.currentTime + 0.025
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    0.0001,
-    audioContext.currentTime + duration
-  );
-
-  source.connect(filter);
-  filter.connect(gain);
-  gain.connect(audioContext.destination);
-
-  source.start();
-  source.stop(audioContext.currentTime + duration);
-
-}
-
-/* Magical sparkle sound */
-
-function playSparkle() {
-
-  if (!audioContext) return;
-
-  const oscillator = audioContext.createOscillator();
-  const gain = audioContext.createGain();
-
-  oscillator.type = "sine";
-
-  const startTime = audioContext.currentTime;
-  const frequency = 900 + Math.random() * 1100;
-
-  oscillator.frequency.setValueAtTime(
-    frequency,
-    startTime
-  );
-
-  oscillator.frequency.exponentialRampToValueAtTime(
-    frequency * 1.5,
-    startTime + 0.15
-  );
-
-  gain.gain.setValueAtTime(
-    0.0001,
-    startTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    0.12,
-    startTime + 0.025
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    0.0001,
-    startTime + 0.35
-  );
-
-  oscillator.connect(gain);
-  gain.connect(audioContext.destination);
-
-  oscillator.start(startTime);
-  oscillator.stop(startTime + 0.35);
-
-}
-
-/* Colorful fireworks and confetti */
-
-function createFireworks() {
-
-  const celebration =
-    document.getElementById("celebration");
-
-  const emojis = [
-    "🎉", "✨", "💖", "🎊", "💕",
-    "🌟", "💗", "🎀", "💫", "🥳"
+// Create colorful animated firecracker bursts
+function createFirework(x, y) {
+  const colors = [
+    "#ff4081",
+    "#ffd700",
+    "#ff7f50",
+    "#ba68c8",
+    "#40c4ff",
+    "#ffffff",
+    "#ff1744"
   ];
 
-  for (let i = 0; i < 75; i++) {
+  const particleCount = 45;
 
-    const burst = document.createElement("span");
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement("div");
+    particle.className = "firework";
 
-    burst.className = "burst";
+    const color = colors[Math.floor(Math.random() * colors.length)];
 
-    burst.textContent =
-      emojis[Math.floor(Math.random() * emojis.length)];
+    particle.style.background = color;
+    particle.style.boxShadow = `0 0 10px ${color}`;
 
-    burst.style.setProperty(
-      "--x",
-      Math.random() * 100 + "vw"
-    );
+    particle.style.left = x + "px";
+    particle.style.top = y + "px";
 
-    burst.style.setProperty(
-      "--y",
-      Math.random() * 80 + "vh"
-    );
+    document.body.appendChild(particle);
 
-    burst.style.setProperty(
-      "--dx",
-      (Math.random() - 0.5) * 300 + "px"
-    );
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 70 + Math.random() * 170;
 
-    burst.style.setProperty(
-      "--dy",
-      (Math.random() - 0.5) * 300 + "px"
-    );
+    const dx = Math.cos(angle) * distance;
+    const dy = Math.sin(angle) * distance;
 
-    burst.style.setProperty(
-      "--size",
-      (18 + Math.random() * 25) + "px"
-    );
+    const duration = 900 + Math.random() * 900;
 
-    burst.style.setProperty(
-      "--delay",
-      Math.random() * 0.8 + "s"
-    );
+    particle.animate([
+      {
+        transform: "translate(0, 0) scale(1)",
+        opacity: 1
+      },
+      {
+        transform: `translate(${dx}px, ${dy}px) scale(0.1)`,
+        opacity: 0
+      }
+    ], {
+      duration: duration,
+      easing: "cubic-bezier(.1,.8,.3,1)",
+      fill: "forwards"
+    });
 
-    celebration.appendChild(burst);
-
+    setTimeout(() => particle.remove(), duration);
   }
-
 }
 
+// Fireworks in different areas of the screen
+function startFireworks() {
+  const positions = [
+    [0.18, 0.25],
+    [0.82, 0.22],
+    [0.5, 0.18],
+    [0.25, 0.45],
+    [0.75, 0.45],
+    [0.5, 0.35],
+    [0.12, 0.60],
+    [0.88, 0.60]
+  ];
+
+  positions.forEach((pos, index) => {
+    setTimeout(() => {
+      const x = window.innerWidth * pos[0];
+      const y = window.innerHeight * pos[1];
+
+      createFirework(x, y);
+      createSparkles(x, y);
+    }, index * 350);
+  });
+
+  // Extra grand finale
+  setTimeout(() => {
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        createFirework(
+          Math.random() * window.innerWidth,
+          Math.random() * window.innerHeight * 0.6
+        );
+      }, i * 250);
+    }
+  }, 1800);
+}
+
+// Tiny twinkling sparkles
+function createSparkles(x, y) {
+  for (let i = 0; i < 12; i++) {
+    const spark = document.createElement("div");
+    spark.className = "spark";
+
+    spark.style.left = (x + Math.random() * 100 - 50) + "px";
+    spark.style.top = (y + Math.random() * 100 - 50) + "px";
+
+    spark.style.background = [
+      "#ffffff",
+      "#ff80ab",
+      "#ffd700"
+    ][Math.floor(Math.random() * 3)];
+
+    document.body.appendChild(spark);
+
+    setTimeout(() => spark.remove(), 1300);
+  }
+}
+
+// Floating hearts
+function createHearts(count) {
+  const hearts = ["💖", "💕", "💗", "💘", "💝", "✨"];
+
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+
+      heart.innerHTML =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (18 + Math.random() * 28) + "px";
+      heart.style.animationDuration = (4 + Math.random() * 5) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 9000);
+    }, i * 180);
+  }
+}
 </script>
 
 </body>
