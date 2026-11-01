@@ -2,111 +2,185 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff0f5">
-<title>Happy Birthday, Mau 💗</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff0f6">
+<title>A Birthday Surprise for Mau 💗</title>
 <style>
-:root{--pink:#f6a9c5;--rose:#d85d8a;--deep:#873d61;--cream:#fff8fb;--text:#65394f;--shadow:0 18px 50px #c75b841c}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--text);font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}button{font:inherit;cursor:pointer;border:0}.wrap{width:min(1100px,92%);margin:auto}.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:70px 18px;position:relative;overflow:hidden;background:radial-gradient(ellipse at top,#ffe0ec 0,#fff5f9 48%,#fffafc 100%)}.hero:before,.hero:after{content:"♡";position:absolute;color:#f4b4ce;font-size:clamp(120px,24vw,300px);opacity:.22;transform:rotate(-18deg);pointer-events:none}.hero:before{left:-4%;top:-15%}.hero:after{right:-5%;bottom:-28%;transform:rotate(18deg)}.hero-inner{position:relative;z-index:1;max-width:780px}.eyebrow{letter-spacing:.2em;text-transform:uppercase;font:600 11px/1.5 system-ui;color:var(--rose)}h1{font-size:clamp(48px,11vw,100px);line-height:.98;margin:18px 0;color:var(--deep);font-weight:500}h1 em{font-weight:400;color:var(--rose)}.lead{font-size:clamp(17px,4vw,23px);line-height:1.7;max-width:620px;margin:22px auto}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:14px 24px;background:var(--rose);color:white;box-shadow:0 8px 22px #d85d8a33;transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px #d85d8a44}.btn.secondary{background:white;color:var(--rose);border:1px solid #f4c4d7}.scrollhint{display:block;margin-top:38px;font:12px system-ui;opacity:.7}.section{padding:85px 0}.section h2{text-align:center;font-size:clamp(32px,7vw,55px);font-weight:500;color:var(--deep);margin:0 0 12px}.sub{text-align:center;max-width:620px;margin:0 auto 38px;line-height:1.7}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.photo{background:white;border-radius:20px;padding:10px;box-shadow:var(--shadow);transform:rotate(var(--r,0deg));transition:transform .25s}.photo:hover{transform:rotate(0) translateY(-5px)}.photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:13px;display:block;background:#fce2ec}.photo figcaption{text-align:center;padding:13px 5px 7px;font-size:15px}.letter-wrap{background:linear-gradient(145deg,#ffe4ee,#fff8fb);padding:20px;border-radius:28px;max-width:780px;margin:auto;box-shadow:var(--shadow)}.letter{background:#fffdfd;border:1px solid #f7d5e3;border-radius:20px;padding:clamp(22px,6vw,55px);line-height:1.9;font-size:18px}.letter h3{font-size:30px;font-weight:500;color:var(--rose);margin-top:0}.gift-area{text-align:center}.gift{font-size:105px;background:transparent;filter:drop-shadow(0 12px 10px #cf729333);animation:bob 2s infinite ease-in-out}.gift:hover{transform:scale(1.08)}@keyframes bob{50%{translate:0 -9px}}.gift-note{min-height:28px;margin:14px auto 25px}.final{background:#ffe5ef;text-align:center;position:relative;overflow:hidden}.final-card{max-width:760px;margin:auto;background:#fff9fc;border-radius:28px;padding:clamp(25px,7vw,65px);box-shadow:var(--shadow)}.final-message{font-size:clamp(25px,5vw,44px);line-height:1.4;color:var(--deep)}.heart{position:fixed;bottom:-30px;z-index:20;pointer-events:none;animation:floatup 5s linear forwards;font-size:20px}@keyframes floatup{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}footer{text-align:center;padding:30px 15px;font:13px system-ui;color:#a56a86}.music{position:fixed;right:15px;bottom:15px;z-index:30;background:white;color:var(--rose);border:1px solid #f4c4d7;border-radius:999px;padding:12px 16px;box-shadow:var(--shadow)}.small{font:13px system-ui;color:#9b6c82}
-@media(max-width:700px){.gallery{grid-template-columns:repeat(2,1fr);gap:12px}.gallery .photo:last-child{grid-column:1/-1;width:70%;justify-self:center}.section{padding:60px 0}.letter{font-size:17px}.music{bottom:10px;right:10px;padding:10px 13px}}
+:root{--pink:#f5a8c4;--rose:#d85d8a;--deep:#873d61;--cream:#fff8fb;--ink:#65394f;--shadow:0 18px 50px #c75b841c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}button,input{font:inherit}button{cursor:pointer;border:0}.hidden{display:none!important}
+.lock{min-height:100svh;display:grid;place-items:center;text-align:center;padding:25px;background:radial-gradient(ellipse at top,#ffe0ec,#fff5f9 55%,#fffafc);position:relative;overflow:hidden}.lock-card{width:min(620px,100%);padding:clamp(24px,7vw,60px);background:#ffffffc9;border:1px solid #f5cada;border-radius:30px;box-shadow:var(--shadow);position:relative;z-index:1}.lock-icon{font-size:clamp(60px,15vw,105px);animation:float 2.5s ease-in-out infinite}.lock h1{font-size:clamp(40px,10vw,78px);font-weight:500;line-height:1;margin:16px 0;color:var(--deep)}.lock h1 em{color:var(--rose)}.lock p{font-size:clamp(16px,4vw,21px);line-height:1.6}.countdown{display:flex;justify-content:center;gap:10px;margin:25px 0}.timebox{min-width:65px;padding:13px 8px;background:#ffe5ef;border-radius:15px;color:var(--deep)}.timebox strong{display:block;font:700 clamp(25px,6vw,38px)/1.2 system-ui}.timebox span{font:11px system-ui;letter-spacing:.08em;text-transform:uppercase}.lock-note{font:12px system-ui;color:#a56a86}.site{min-height:100vh}.topbar{position:sticky;top:0;z-index:10;background:#fffafce8;backdrop-filter:blur(12px);border-bottom:1px solid #f5dce7;display:flex;align-items:center;justify-content:space-between;padding:12px max(4%,calc((100% - 1100px)/2));gap:10px}.brand{font-size:20px;color:var(--deep)}.nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.nav button{background:#fff0f6;color:var(--deep);padding:9px 13px;border-radius:999px;font-size:13px}.nav button.active,.nav button:hover{background:var(--rose);color:white}.page{display:none;min-height:calc(100svh - 65px);padding:65px 0}.page.active{display:block;animation:fade .45s ease}.wrap{width:min(1050px,92%);margin:auto}.hero{display:grid;place-items:center;text-align:center;background:radial-gradient(ellipse at top,#ffe0ec,#fff5f9 48%,#fffafc);position:relative;overflow:hidden}.hero-inner{max-width:800px;position:relative}.eyebrow{letter-spacing:.2em;text-transform:uppercase;font:600 11px/1.5 system-ui;color:var(--rose)}h1{font-size:clamp(48px,11vw,100px);line-height:.98;margin:18px 0;color:var(--deep);font-weight:500}h1 em{font-weight:400;color:var(--rose)}h2{text-align:center;font-size:clamp(32px,7vw,55px);font-weight:500;color:var(--deep);margin:0 0 12px}.lead{font-size:clamp(17px,4vw,23px);line-height:1.7;max-width:650px;margin:22px auto}.sub{text-align:center;max-width:650px;margin:0 auto 38px;line-height:1.7}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:14px 24px;background:var(--rose);color:white;box-shadow:0 8px 22px #d85d8a33;transition:.2s;margin:6px}.btn:hover{transform:translateY(-2px)}.btn.light{background:white;color:var(--rose);border:1px solid #f4c4d7}.center{text-align:center}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.photo{background:white;border-radius:20px;padding:10px;box-shadow:var(--shadow);transform:rotate(var(--r,0deg));transition:transform .25s}.photo:hover{transform:rotate(0) translateY(-5px)}.photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:13px;display:block;background:#fce2ec}.photo figcaption{text-align:center;padding:13px 5px 7px;font-size:15px}.paper{max-width:780px;margin:auto;background:#fffdfd;border:1px solid #f7d5e3;border-radius:20px;padding:clamp(22px,6vw,55px);line-height:1.9;font-size:18px;box-shadow:var(--shadow)}.paper h3{font-size:30px;font-weight:500;color:var(--rose);margin-top:0}.softpink{background:linear-gradient(145deg,#ffe4ee,#fff8fb)}.lavender{background:radial-gradient(ellipse at top,#eee2ff,#faf6ff)}.night{background:linear-gradient(150deg,#1d1a38,#3d2c5c);color:#fff}.night h2,.night h3{color:#ffe2f0}.starfield{font-size:clamp(25px,5vw,45px);letter-spacing:.4em;line-height:2.2;color:#ffe2a8}.gift{font-size:105px;background:transparent;filter:drop-shadow(0 12px 10px #cf729333);animation:bob 2s infinite ease-in-out}.letter{font-size:18px;line-height:1.9}.timeline{max-width:700px;margin:auto;display:grid;gap:15px}.moment{background:#fff;border:1px solid #f4cddd;border-radius:18px;padding:20px;box-shadow:var(--shadow)}.moment b{color:var(--rose)}.reason{max-width:520px;min-height:130px;margin:20px auto;padding:30px;background:#fff;border-radius:22px;box-shadow:var(--shadow);font-size:23px;display:grid;place-items:center;text-align:center}.cake{font-size:100px;cursor:pointer;animation:bob 2s infinite}.scratch{max-width:550px;margin:20px auto;padding:25px;background:white;border-radius:20px;box-shadow:var(--shadow);text-align:center}.scratch button{background:#f4b2cc;color:#733b58;border-radius:15px;padding:18px 30px;font-weight:bold}.finalcard{max-width:760px;margin:auto;background:#fff9fc;border-radius:28px;padding:clamp(25px,7vw,65px);box-shadow:var(--shadow)}.finalmessage{font-size:clamp(25px,5vw,44px);line-height:1.4;color:var(--deep)}.music{position:fixed;right:15px;bottom:15px;z-index:20;background:white;color:var(--rose);border:1px solid #f4c4d7;border-radius:999px;padding:12px 16px;box-shadow:var(--shadow)}.pagecontrols{display:flex;justify-content:center;flex-wrap:wrap;margin-top:35px}.small{font:13px system-ui;color:#9b6c82}.heart{position:fixed;bottom:-30px;z-index:30;pointer-events:none;animation:floatup 5s linear forwards;font-size:20px}@keyframes floatup{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}@keyframes bob{50%{translate:0 -9px}}@keyframes float{50%{transform:translateY(-8px)}}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}footer{text-align:center;padding:25px;font:13px system-ui;color:#a56a86}
+@media(max-width:700px){.gallery{grid-template-columns:repeat(2,1fr);gap:12px}.gallery .photo:last-child{grid-column:1/-1;width:70%;justify-self:center}.page{padding:50px 0}.nav{gap:4px}.nav button{padding:8px 10px;font-size:12px}.topbar{align-items:flex-start}.brand{font-size:17px}.timebox{min-width:55px}.paper{font-size:17px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
-<button class="music" id="musicBtn" aria-label="Toggle birthday music">♫ Play music</button>
-<header class="hero" id="top">
-  <div class="hero-inner">
-    <div class="eyebrow">A little birthday surprise made just for you</div>
-    <h1>Happy Birthday,<br><em>MAU</em> 💗</h1>
-    <p class="lead">For my favorite person, Manasi.<br>A little corner of the internet made with all my love.</p>
-    <a class="btn" href="#memories">Open your surprise <span>♡</span></a>
-    <span class="scrollhint">Made for you, with love · ↓</span>
+<!-- LOCK SCREEN: birthday unlocks at midnight IST on 2 Nov 2026 -->
+<section id="lock" class="lock">
+  <div class="lock-card">
+    <div class="lock-icon">🎁</div>
+    <div class="eyebrow">A little surprise is waiting for you</div>
+    <h1>For <em>Mau</em> 💗</h1>
+    <p>This little birthday world is made just for you.<br>Come back when the countdown ends, my love.</p>
+    <div class="countdown" aria-live="polite">
+      <div class="timebox"><strong id="days">00</strong><span>Days</span></div>
+      <div class="timebox"><strong id="hours">00</strong><span>Hours</span></div>
+      <div class="timebox"><strong id="mins">00</strong><span>Minutes</span></div>
+      <div class="timebox"><strong id="secs">00</strong><span>Seconds</span></div>
+    </div>
+    <p class="lock-note">Unlocks on November 2, 2026 · 12:00 AM India time</p>
+    <p class="lock-note">Until then, the birthday pages stay locked. 💌</p>
   </div>
+</section>
+
+<div id="site" class="site hidden">
+<header class="topbar">
+  <div class="brand">For Mau <span>♡</span></div>
+  <nav class="nav" aria-label="Birthday pages">
+    <button data-page="home" class="active">Home</button><button data-page="memories">Memories</button><button data-page="letter">Letter</button><button data-page="reasons">Reasons</button><button data-page="timeline">Our story</button><button data-page="song">Our song</button><button data-page="surprises">Surprises</button><button data-page="final">Finale</button>
+  </nav>
 </header>
 
 <main>
-<section class="section wrap" id="memories">
-  <h2>Our little memories</h2>
-  <p class="sub">Every picture holds a moment I wish I could live again. Replace these placeholders with your favorite photos together.</p>
+<section class="page hero active" id="page-home">
+ <div class="hero-inner wrap">
+  <div class="eyebrow">A birthday journey made with love</div>
+  <h1>Happy Birthday,<br><em>MAU</em> 💗</h1>
+  <p class="lead">For my favorite person, Manasi.<br>Happy birthday MAU😍💕💕💝 I love you endlessly 😚😘</p>
+  <button class="btn" onclick="go('memories')">Start our little journey ♡</button>
+ </div>
+</section>
+
+<section class="page" id="page-memories">
+ <div class="wrap">
+  <h2>Our little memories 📸</h2><p class="sub">Every picture holds a moment I wish I could live again. Replace these placeholders with your favorite photos together.</p>
   <div class="gallery">
-    <figure class="photo" style="--r:-2deg"><img src="images/photo1.jpg" alt="Our first memory"><figcaption>One of my favorite moments ♡</figcaption></figure>
-    <figure class="photo" style="--r:1.5deg"><img src="images/photo2.jpg" alt="A happy moment together"><figcaption>Your smile, my favorite view</figcaption></figure>
-    <figure class="photo" style="--r:-1deg"><img src="images/photo3.jpg" alt="A special day"><figcaption>Just us, being us</figcaption></figure>
-  </div>
-  <p class="small" style="text-align:center;margin-top:18px">Tip: add your images to the <code>images</code> folder and name them photo1.jpg, photo2.jpg and photo3.jpg.</p>
+   <figure class="photo" style="--r:-2deg"><img src="images/photo1.jpg" alt="Our first memory"><figcaption>One of my favorite moments ♡</figcaption></figure>
+   <figure class="photo" style="--r:1.5deg"><img src="images/photo2.jpg" alt="A happy moment together"><figcaption>Your smile, my favorite view</figcaption></figure>
+   <figure class="photo" style="--r:-1deg"><img src="images/photo3.jpg" alt="A special day"><figcaption>Just us, being us</figcaption></figure>
+  </div><p class="small center">Add your own photos to the images folder and name them photo1.jpg, photo2.jpg, photo3.jpg.</p>
+  <div class="pagecontrols"><button class="btn" onclick="go('letter')">Next: A letter for you 💌</button></div>
+ </div>
 </section>
 
-<section class="section" style="background:#fff0f6">
-  <div class="wrap">
-    <h2>A letter for you</h2>
-    <p class="sub">A few words from my heart, just for you.</p>
-    <div class="letter-wrap"><article class="letter">
-      <h3>My dearest Mau, 💌</h3>
-      <p>Happy birthday MAU😍💕💕💝 I love you endlessly 😚😘.</p>
-      <p>Today is all about celebrating you — your beautiful smile, your kind heart, and all the little things that make you so special to me. I hope this new year of your life brings you endless happiness, lovely surprises, and everything your heart wishes for.</p>
-      <p>Thank you for being you and for making my world brighter. No matter how many birthdays come and go, I hope I get to keep reminding you how much you mean to me.</p>
-      <p>With all my love, always,<br><strong>Your person 💗</strong></p>
-    </article></div>
-  </div>
+<section class="page softpink" id="page-letter">
+ <div class="wrap">
+  <h2>A letter from my heart 💌</h2><p class="sub">A few words from me, just for you.</p>
+  <article class="paper letter"><h3>My dearest Mau,</h3>
+   <p>Happy birthday MAU😍💕💕💝 I love you endlessly 😚😘.</p>
+   <p>Today is all about celebrating you — your beautiful smile, your kind heart, and all the little things that make you so special to me. I hope this new year of your life brings you endless happiness, lovely surprises, and everything your heart wishes for.</p>
+   <p>Thank you for being you and for making my world brighter. No matter how many birthdays come and go, I hope I get to keep reminding you how much you mean to me.</p>
+   <p>With all my love, always,<br><strong>Your person 💗</strong></p>
+  </article><div class="pagecontrols"><button class="btn" onclick="go('reasons')">Next: Reasons I love you 💕</button></div>
+ </div>
 </section>
 
-<section class="section wrap gift-area" id="gift">
-  <h2>One more little surprise…</h2>
-  <p class="sub">Tap the gift and see what’s inside. (Go on, Mau!)</p>
-  <button class="gift" id="giftBtn" aria-label="Open the surprise gift">🎁</button>
-  <p class="gift-note" id="giftNote">A gift for the birthday girl…</p>
-  <button class="btn" id="openGift">Open my gift ♡</button>
+<section class="page lavender" id="page-reasons">
+ <div class="wrap center">
+  <h2>Reasons I love you 💕</h2><p class="sub">Tap the heart to discover a little reason. (You can customize these in the code!)</p>
+  <div class="reason" id="reason">Tap below to reveal one…</div>
+  <button class="btn" onclick="showReason()">Reveal a reason ♡</button>
+  <div class="pagecontrols"><button class="btn light" onclick="go('timeline')">Next: Our story ✨</button></div>
+ </div>
 </section>
 
-<section class="section final" id="final">
-  <div class="wrap">
-    <div class="final-card">
-      <div class="eyebrow">And finally…</div>
-      <h2>One last thing, Mau</h2>
-      <p class="final-message" id="finalMessage">Happy birthday, my love. I love you endlessly. 😚😘💕</p>
-      <button class="btn" id="surpriseBtn">Tap for the final surprise ✨</button>
-      <p class="small" id="finalNote" aria-live="polite"></p>
-    </div>
+<section class="page" id="page-timeline">
+ <div class="wrap">
+  <h2>Our little story 🌸</h2><p class="sub">Add the moments that mean the most to both of you.</p>
+  <div class="timeline">
+   <div class="moment"><b>✨ The beginning</b><p>That moment our story started…</p></div>
+   <div class="moment"><b>💗 A favorite memory</b><p>One day I will always remember with a smile.</p></div>
+   <div class="moment"><b>🌷 Today</b><p>Celebrating you and all the beautiful moments still waiting for us.</p></div>
   </div>
+  <div class="pagecontrols"><button class="btn" onclick="go('song')">Next: Our song 🎵</button></div>
+ </div>
+</section>
+
+<section class="page softpink" id="page-song">
+ <div class="wrap center">
+  <h2>Our song 🎵</h2><p class="sub">Add a song that reminds you of her. Tap play to listen.</p>
+  <div class="paper"><div style="font-size:75px">🎶</div><h3>Just for us</h3><p>Every love story has a soundtrack. This one is ours.</p><button class="btn" onclick="toggleMusic()">♫ Play / Pause music</button><p class="small">Add your own audio file at music/birthday.mp3. Use music you have permission to share.</p></div>
+  <div class="pagecontrols"><button class="btn" onclick="go('surprises')">Next: More surprises 🎁</button></div>
+ </div>
+</section>
+
+<section class="page lavender" id="page-surprises">
+ <div class="wrap center">
+  <h2>Little birthday surprises 🎁</h2><p class="sub">Choose a surprise, Mau. Each one has something sweet waiting.</p>
+  <div style="display:flex;justify-content:center;gap:15px;flex-wrap:wrap">
+   <button class="gift" onclick="gift(0)" aria-label="Open gift one">🎁</button>
+   <button class="gift" onclick="gift(1)" aria-label="Open gift two">🎀</button>
+   <button class="gift" onclick="gift(2)" aria-label="Open gift three">💝</button>
+  </div>
+  <div class="reason" id="giftMessage">Choose a gift to open it…</div>
+  <div class="scratch"><h3>Scratch-to-reveal birthday wish</h3><p>Tap the card to reveal your message:</p><button id="scratchBtn" onclick="scratch()">✨ Scratch here ✨</button><p id="scratchMessage"></p></div>
+  <div class="paper" style="margin-top:20px"><h3>Make a wish 🎂</h3><div class="cake" onclick="blowCandles()">🎂</div><p id="cakeMessage">Tap the cake to blow out the candles!</p></div>
+  <div class="pagecontrols"><button class="btn" onclick="go('final')">Next: One last thing 💗</button></div>
+ </div>
+</section>
+
+<section class="page night" id="page-final">
+ <div class="wrap center">
+  <div class="starfield">✦ · ✧ · ✦ · ✧ · ✦</div>
+  <div class="finalcard">
+   <div class="eyebrow">And finally…</div><h2>One last thing, Mau</h2>
+   <p class="finalmessage" id="finalMessage">Happy birthday MAU😍💕💕💝 I love you endlessly 😚😘.</p>
+   <p>Today, tomorrow, and always — you have my heart. 💗</p>
+   <button class="btn" onclick="finalSurprise()">Tap for the final surprise ✨</button>
+   <p id="finalNote" aria-live="polite"></p>
+  </div>
+ </div>
 </section>
 </main>
 <footer>Made with all my love for Mau · Happy Birthday 💗</footer>
-
-<!-- Optional music: add your own audio file at music/birthday.mp3 -->
+<button class="music" id="musicBtn" onclick="toggleMusic()">♫ Play music</button>
 <audio id="bgMusic" loop preload="none"><source src="music/birthday.mp3" type="audio/mpeg"></audio>
+</div>
+
 <script>
-const giftBtn=document.getElementById('giftBtn');
-const openGift=document.getElementById('openGift');
-const giftNote=document.getElementById('giftNote');
-function openSurprise(){
-  giftBtn.textContent='💝';
-  giftNote.innerHTML='Surprise! Sending you the biggest hug, a million kisses, and all my love. <br>💗 You are my favorite person. 💗';
-  burstHearts(24);
+/* Countdown target: 2026-11-02 00:00:00 IST = 2026-11-01T18:30:00Z */
+const unlockAt=Date.parse('2026-11-01T18:30:00Z');
+const lock=document.getElementById('lock'),site=document.getElementById('site');
+function tick(){
+ const remaining=unlockAt-Date.now();
+ if(remaining<=0){lock.classList.add('hidden');site.classList.remove('hidden');return;}
+ const d=Math.floor(remaining/86400000),h=Math.floor(remaining%86400000/3600000),m=Math.floor(remaining%3600000/60000),s=Math.floor(remaining%60000/1000);
+ document.getElementById('days').textContent=String(d).padStart(2,'0');
+ document.getElementById('hours').textContent=String(h).padStart(2,'0');
+ document.getElementById('mins').textContent=String(m).padStart(2,'0');
+ document.getElementById('secs').textContent=String(s).padStart(2,'0');
 }
-giftBtn.addEventListener('click',openSurprise);
-openGift.addEventListener('click',openSurprise);
-function burstHearts(count=12){
-  const emojis=['💗','💕','💖','💘','✨','🌸'];
-  for(let i=0;i<count;i++){
-    const el=document.createElement('span');el.className='heart';
-    el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-    el.style.left=Math.random()*100+'vw';el.style.animationDuration=(3+Math.random()*3)+'s';
-    el.style.fontSize=(16+Math.random()*22)+'px';document.body.appendChild(el);
-    setTimeout(()=>el.remove(),6500);
-  }
+tick();setInterval(tick,1000);
+function go(name){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('page-'+name).classList.add('active');
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+ window.scrollTo({top:0,behavior:'smooth'});
+ burstHearts(7);
 }
-document.getElementById('surpriseBtn').addEventListener('click',()=>{
-  document.getElementById('finalMessage').textContent='Happy birthday MAU😍💕💕💝 I love you endlessly 😚😘. Today, tomorrow, and always — you have my heart.';
-  document.getElementById('finalNote').textContent='You are loved more than words can say. 💗';
-  burstHearts(45);
-});
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+const reasons=[
+"Your smile makes my whole day brighter. 💗",
+"I love how you make ordinary moments feel special.",
+"Your heart is beautiful, inside and out.",
+"You make me laugh when I need it most. 😚",
+"Being with you feels like home.",
+"I love all the little things that make you uniquely you.",
+"Because you are my Mau, and I love you endlessly. 💝"
+];
+let reasonIndex=0;
+function showReason(){document.getElementById('reason').textContent=reasons[reasonIndex++%reasons.length];burstHearts(9);}
+const gifts=[
+"A lifetime of hugs and kisses, reserved just for you. 💋",
+"One wish from you, and I will do my best to make it come true. 🌷",
+"Your very own reminder: you are loved more than you know. 💗"
+];
+function gift(i){document.getElementById('giftMessage').textContent=gifts[i];burstHearts(16);}
+function scratch(){document.getElementById('scratchMessage').textContent="Happy birthday, Mau! I love you endlessly 😚😘💕";document.getElementById('scratchBtn').textContent="Revealed! 💝";burstHearts(14);}
+function blowCandles(){document.getElementById('cakeMessage').textContent="Wish made! May your dreams come true, my love. 🎉";burstHearts(22);}
+function finalSurprise(){document.getElementById('finalMessage').textContent="Happy birthday MAU😍💕💕💝 I love you endlessly 😚😘. Today, tomorrow, and always — you have my heart.";document.getElementById('finalNote').textContent="You are loved more than words can say. 💗";burstHearts(45);}
+function burstHearts(count=12){const emojis=['💗','💕','💖','💘','✨','🌸'];for(let i=0;i<count;i++){const el=document.createElement('span');el.className='heart';el.textContent=emojis[Math.floor(Math.random()*emojis.length)];el.style.left=Math.random()*100+'vw';el.style.animationDuration=(3+Math.random()*3)+'s';el.style.fontSize=(16+Math.random()*22)+'px';document.body.appendChild(el);setTimeout(()=>el.remove(),6500);}}
 const music=document.getElementById('bgMusic'),musicBtn=document.getElementById('musicBtn');
-musicBtn.addEventListener('click',async()=>{
-  if(music.paused){
-    try{await music.play();musicBtn.textContent='♫ Pause music';}
-    catch(e){musicBtn.textContent='Add music/birthday.mp3';}
-  }else{music.pause();musicBtn.textContent='♫ Play music';}
-});
+async function toggleMusic(){if(music.paused){try{await music.play();musicBtn.textContent='♫ Pause music';}catch(e){musicBtn.textContent='Add music/birthday.mp3';}}else{music.pause();musicBtn.textContent='♫ Play music';}}
 </script>
 </body>
 </html>
