@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Happy Birthday, Mau 💗</title>
+<title>Happy Birthday Mau 💗</title>
 
 <style>
 :root {
@@ -319,9 +319,9 @@ footer {
        alt="Mau's special photo"
        onerror="this.style.display='none'">
 
-  <h1>Happy Birthday, My Mau! 💖</h1>
+  <h1>Happy Birthday MAU! 💖</h1>
 
-  <p>A little website made with all my love, just for you. ♡</p>
+  <p>A little surprise made with all my love, just for you. ♡</p>
 </header>
 
 <nav class="nav" aria-label="Birthday pages">
@@ -590,6 +590,307 @@ function openModal(source) {
 function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
+// REASONS I LOVE YOU
+const reasons = [
+  "Your smile makes my day brighter. 💗",
+  "You make ordinary moments feel special.",
+  "I love how you are simply you.",
+  "You make me feel lucky to have you in my life.",
+  "Every song feels sweeter when it reminds me of you.",
+  "You are my favourite person to share little things with.",
+  "You make my world more beautiful. 💕"
+];
+
+let reasonIndex = 0;
+
+function nextReason() {
+  reasonIndex = (reasonIndex + 1) % reasons.length;
+
+  document.getElementById("reasonText").textContent =
+    reasons[reasonIndex];
+}
+
+// INITIALIZE WEBSITE
+renderPlaylist();
+
+renderGallery(
+  memoryPhotos,
+  "gallery",
+  "memories"
+);
+
+renderGallery(
+  surprisePhotos,
+  "surpriseGallery",
+  "surprises"
+);
+</script>
+
+</body>
+</html>
+<script>
+const musicFiles = [
+  {file:"01-Samjhawan.mp3", title:"Samjhawan"},
+  {file:"02-You-Belong-with-Me.mp3", title:"You Belong with Me"},
+  {file:"03-Fake-Love.mp3", title:"Fake Love"},
+  {file:"04-Spring-Day.mp3", title:"Spring Day"},
+  {file:"05-Tu-Hi-Meri-Shab-Hai.mp3", title:"Tu Hi Meri Shab Hai"},
+  {file:"06-Tum-Se-Hi.mp3", title:"Tum Se Hi"},
+  {file:"07-Tu-Hi-Toh-Hai.mp3", title:"Tu Hi Toh Hai"},
+  {file:"08-Shayarana.mp3", title:"Shayarana"},
+  {file:"09-Mere-Nishaan.mp3", title:"Mere Nishaan"},
+  {file:"10-Alfaaz.mp3", title:"Alfaaz"},
+  {file:"11-Saibo.mp3", title:"Saibo"},
+  {file:"12-Te-Amo.mp3", title:"Te Amo"},
+  {file:"13-Khasiyat.mp3", title:"Khasiyat"}
+];
+
+const memoryPhotos = [];
+const surprisePhotos = [];
+
+const audio = document.getElementById("audio");
+let currentSong = 0;
+
+function filenameTitle(file) {
+  return decodeURIComponent(file.split("/").pop())
+    .replace(/\.[^.]+$/, "")
+    .replace(/[-_]/g, " ");
+}
+
+function escapeHTML(text) {
+  return String(text).replace(/[&<>"']/g, character => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;",
+    '"':"&quot;", "'":"&#39;"
+  }[character]));
+}
+
+function renderPlaylist() {
+  const list = document.getElementById("playlist");
+  list.innerHTML = "";
+
+  musicFiles.forEach((song, index) => {
+    const button = document.createElement("button");
+    button.className = "track" +
+      (index === currentSong ? " active" : "");
+
+    const title = song.title && song.title.trim()
+      ? song.title
+      : filenameTitle(song.file);
+
+    button.innerHTML =
+      `<span>♫</span><span>${index + 1}. ${escapeHTML(title)}</span>`;
+
+    button.onclick = () => loadSong(index, true);
+    list.appendChild(button);
+  });
+}
+function loadSong(index, autoplay = false) {
+  if (!musicFiles.length) return;
+
+  currentSong = (index + musicFiles.length) % musicFiles.length;
+  const song = musicFiles[currentSong];
+
+  audio.src = "music/" + song.file;
+
+  document.getElementById("songTitle").textContent =
+    song.title && song.title.trim()
+      ? song.title
+      : filenameTitle(song.file);
+
+  document.getElementById("songFile").textContent = song.file;
+
+  renderPlaylist();
+
+  if (autoplay) {
+    audio.play().catch(() => {});
+  }
+}
+
+function togglePlay() {
+  if (!audio.src) {
+    loadSong(0, true);
+    return;
+  }
+
+  if (audio.paused) audio.play().catch(() => {});
+  else audio.pause();
+}
+
+function nextSong() {
+  loadSong(currentSong + 1, true);
+}
+
+function previousSong() {
+  loadSong(currentSong - 1, true);
+}
+
+audio.addEventListener("ended", nextSong);
+
+audio.addEventListener("play", () => {
+  document.getElementById("play").textContent = "❚❚";
+});
+
+audio.addEventListener("pause", () => {
+  document.getElementById("play").textContent = "▶";
+});
+
+// PAGE BUTTONS
+function showSection(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+// PHOTO GALLERY
+function renderGallery(photoList, targetId, folder) {
+  const target = document.getElementById(targetId);
+  target.innerHTML = "";
+
+  if (!photoList.length) {
+    target.innerHTML =
+      `<div class="gallery-empty" style="grid-column:1/-1">
+        Upload photos to the <b>${folder}/</b> folder.
+        Then add their filenames to the photo list in index.html.
+      </div>`;
+    return;
+  }
+
+  const columns = 3;
+
+  for (let columnIndex = 0; columnIndex < columns; columnIndex++) {
+    const column = document.createElement("div");
+    column.className = "strip";
+
+    const columnPhotos = photoList.filter(
+      (_, index) => index % columns === columnIndex
+    );
+
+    const repeatedPhotos = [...columnPhotos, ...columnPhotos];
+
+    repeatedPhotos.forEach(filename => {
+      const image = document.createElement("img");
+
+      image.src = folder + "/" + filename;
+      image.alt = "Our memory";
+      image.loading = "lazy";
+
+      image.onclick = () => openModal(image.src);
+      image.onerror = () => image.style.display = "none";
+
+      column.appendChild(image);
+    });
+
+    target.appendChild(column);
+  }
+}
+function loadSong(index, autoplay = false) {
+  if (!musicFiles.length) return;
+
+  currentSong = (index + musicFiles.length) % musicFiles.length;
+  const song = musicFiles[currentSong];
+
+  audio.src = "music/" + song.file;
+
+  document.getElementById("songTitle").textContent =
+    song.title && song.title.trim()
+      ? song.title
+      : filenameTitle(song.file);
+
+  document.getElementById("songFile").textContent = song.file;
+
+  renderPlaylist();
+
+  if (autoplay) {
+    audio.play().catch(() => {});
+  }
+}
+
+function togglePlay() {
+  if (!audio.src) {
+    loadSong(0, true);
+    return;
+  }
+
+  if (audio.paused) audio.play().catch(() => {});
+  else audio.pause();
+}
+
+function nextSong() {
+  loadSong(currentSong + 1, true);
+}
+
+function previousSong() {
+  loadSong(currentSong - 1, true);
+}
+
+audio.addEventListener("ended", nextSong);
+
+audio.addEventListener("play", () => {
+  document.getElementById("play").textContent = "❚❚";
+});
+
+audio.addEventListener("pause", () => {
+  document.getElementById("play").textContent = "▶";
+});
+// PAGE BUTTONS
+function showSection(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+// PHOTO GALLERY
+function renderGallery(photoList, targetId, folder) {
+  const target = document.getElementById(targetId);
+  target.innerHTML = "";
+
+  if (!photoList.length) {
+    target.innerHTML =
+      `<div class="gallery-empty" style="grid-column:1/-1">
+        Upload photos to the <b>${folder}/</b> folder.
+        Then add their filenames to the photo list in index.html.
+      </div>`;
+    return;
+  }
+
+  const columns = 3;
+
+  for (let columnIndex = 0; columnIndex < columns; columnIndex++) {
+    const column = document.createElement("div");
+    column.className = "strip";
+
+    const columnPhotos = photoList.filter(
+      (_, index) => index % columns === columnIndex
+    );
+
+    const repeatedPhotos = [...columnPhotos, ...columnPhotos];
+
+    repeatedPhotos.forEach(filename => {
+      const image = document.createElement("img");
+
+      image.src = folder + "/" + filename;
+      image.alt = "Our memory";
+      image.loading = "lazy";
+
+      image.onclick = () => openModal(image.src);
+      image.onerror = () => image.style.display = "none";
+
+      column.appendChild(image);
+    });
+
+    target.appendChild(column);
+  }
+}
+// FULL-SIZE PHOTO VIEWER
+function openModal(source) {
+  document.getElementById("modalImg").src = source;
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
 // REASONS I LOVE YOU
 const reasons = [
   "Your smile makes my day brighter. 💗",
