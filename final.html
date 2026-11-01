@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Forever 💜</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --lavender: #d8c2ff;
+      --purple: #9b7bd4;
+      --deep: #302448;
+      --cream: #fffaff;
+      --pink: #f6c8e2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: "DM Sans", sans-serif;
+      color: var(--deep);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 216, 244, 0.8), transparent 30%),
+        radial-gradient(circle at 85% 15%, rgba(194, 169, 255, 0.65), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(224, 205, 255, 0.8), transparent 40%),
+        linear-gradient(135deg, #fff8ff, #eee4ff, #fce9f7);
+    }
+
+    .background-glow {
+      position: fixed;
+      width: 700px;
+      height: 700px;
+      top: -250px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.85),
+        rgba(221, 196, 255, 0.25),
+        transparent 70%
+      );
+      animation: glowPulse 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes glowPulse {
+      from {
+        opacity: 0.55;
+        transform: translateX(-50%) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.2);
+      }
+    }
+
+    .home {
+      position: fixed;
+      top: 22px;
+      left: 22px;
+      z-index: 30;
+      text-decoration: none;
+      color: #685183;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(151, 120, 198, 0.2);
+      padding: 11px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      backdrop-filter: blur(12px);
+      transition: 0.3s;
+    }
+
+    .home:hover {
+      transform: translateY(-3px);
+      background: white;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(900px, 92%);
+      margin: auto;
+      padding: 100px 0 70px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 9px 18px;
+      border: 1px solid rgba(161, 126, 207, 0.25);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.55);
+      color: #9275b8;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(43px, 8vw, 82px);
+      font-weight: 500;
+      line-height: 1.12;
+      color: #624c87;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      font-style: italic;
+      color: #a180d4;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 0 auto;
+      color: #86739e;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .heart-divider {
+      font-size: 23px;
+      color: #bd9ae9;
+      margin: 35px 0;
+      animation: heartbeat 1.8s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.18); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.12); }
+    }
+
+    .letter {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 42px 38px;
+      border: 1px solid rgba(169, 139, 213, 0.25);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.63);
+      box-shadow: 0 20px 60px rgba(108, 77, 153, 0.1);
+      backdrop-filter: blur(12px);
+      text-align: left;
+    }
+
+    .letter .dear {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      font-style: italic;
+      color: #8e70bd;
+      margin-bottom: 22px;
+    }
+
+    .letter p {
+      color: #7e6b98;
+      font-size: 15px;
+      line-height: 2;
+      margin-bottom: 17px;
+    }
+
+    .letter .signature {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      font-style: italic;
+      color: #9876c8;
+      margin-top: 25px;
+      margin-bottom: 0;
+    }
+
+    .forever-section {
+      margin: 65px auto 0;
+      padding: 45px 22px 40px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.48);
+      border: 1px solid rgba(168, 136, 212, 0.22);
+      box-shadow: 0 20px 55px rgba(108, 77, 153, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .forever-section .small-heart {
+      font-size: 38px;
+      margin-bottom: 18px;
+      display: inline-block;
+      animation: heartbeat 1.8s infinite;
+    }
+
+    .forever-section h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 500;
+      color: #6d548e;
+      margin-bottom: 14px;
+    }
+
+    .forever-section .question {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      color: #a080ce;
+      font-size: clamp(26px, 5vw, 42px);
+      margin-bottom: 32px;
+    }
+
+    .button-area {
+      position: relative;
+      width: min(460px, 100%);
+      min-height: 150px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      touch-action: manipulation;
+    }
+
+    .answer-btn {
+      border: none;
+      border-radius: 50px;
+      padding: 15px 32px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .yes-btn {
+      position: relative;
+      z-index: 2;
+      color: white;
+      background: linear-gradient(135deg, #a78add, #d39edc);
+      box-shadow: 0 10px 25px rgba(156, 121, 208, 0.3);
+    }
+
+    .yes-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(156, 121, 208, 0.4);
+    }
+
+    .no-btn {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 58%;
+      transform: translate(-50%, -50%);
+      color: #8d78a5;
+      background: #f4eaff;
+      border: 1px solid rgba(169, 139, 208, 0.3);
+      box-shadow: 0 7px 18px rgba(124, 91, 163, 0.1);
+      white-space: nowrap;
+    }
+
+    .no-btn:hover {
+      background: #f9f2ff;
+    }
+
+    .forever-note {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #a18bb9;
+    }
+
+    .success-message {
+      display: none;
+      max-width: 650px;
+      margin: 30px auto 0;
+      padding: 35px 25px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(201, 160, 236, 0.35);
+      animation: reveal 0.8s ease both;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .success-message .big-heart {
+      font-size: 52px;
+      margin-bottom: 15px;
+    }
+
+    .success-message h3 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 500;
+      color: #8e6bbd;
+      margin-bottom: 18px;
+    }
+
+    .success-message p {
+      color: #7e6b98;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .success-message .promise {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 21px;
+      color: #a17bcb;
+      margin-top: 20px;
+    }
+
+    .footer {
+      margin-top: 45px;
+      color: #a28db8;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+    }
+
+    .floating {
+      position: fixed;
+      bottom: -35px;
+      z-index: 0;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 0.8; }
+      85% { opacity: 0.7; }
+      100% {
+        transform: translateY(-110vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .celebration {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      overflow: hidden;
+    }
+
+    .celebration-piece {
+      position: absolute;
+      top: -30px;
+      animation: fall 3.8s linear forwards;
+      font-size: 22px;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding-top: 95px;
+      }
+
+      .letter {
+        padding: 30px 23px;
+      }
+
+      .letter p {
+        font-size: 14px;
+      }
+
+      .forever-section {
+        padding: 35px 15px;
+      }
+
+      .button-area {
+        min-height: 170px;
+        gap: 15px;
+      }
+
+      .answer-btn {
+        padding: 14px 25px;
+        font-size: 15px;
+      }
+
+      .home {
+        top: 14px;
+        left: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-glow"></div>
+
+  <a class="home" href="index.html">← Home</a>
+
+  <main class="page">
+    <div class="eyebrow">A little forever 💜</div>
+
+    <h1>To My Favourite<br><span>Person in the World</span></h1>
+
+    <p class="intro">
+      Before this little birthday journey ends, I want you to know
+      something from the deepest part of my heart.
+    </p>
+
+    <div class="heart-divider">♡ ✧ ♡</div>
+
+    <section class="letter">
+      <div class="dear">My dearest Mau,</div>
+
+      <p>
+        Happy birthday to the person who makes my world feel so much
+        more beautiful just by being in it.
+      </p>
+
+      <p>
+        I wish I could give you every beautiful thing this world has to
+        offer, because you deserve so much happiness, love, and peace.
+        You deserve days filled with laughter, dreams that come true,
+        and a heart that always feels cherished.
+      </p>
+
+      <p>
+        Thank you for being you. Thank you for all the little moments,
+        the smiles, the laughter, the memories, and the love that makes
+        even ordinary days feel special.
+      </p>
+
+      <p>
+        No matter how many birthdays come and go, I hope I get to be
+        there beside you — celebrating your wins, holding your hand
+        through the difficult days, making silly memories, and loving
+        you in all the little ways that matter.
+      </p>
+
+      <p>
+        If there is one thing I wish for today, it is that you always
+        remember how special you are to me.
+      </p>
+
+      <p class="signature">
+        With all my love, always ♡
+      </p>
+    </section>
+
+    <section class="forever-section" id="forever">
+      <div class="small-heart">💜</div>
+
+      <h2>And one last thing...</h2>
+
+      <p class="question">Will you be my forever?</p>
+
+      <div class="button-area" id="buttonArea">
+        <button class="answer-btn yes-btn" id="yesBtn">
+          YES 💖
+        </button>
+
+        <button class="answer-btn no-btn" id="noBtn">
+          NO 🙈
+        </button>
+      </div>
+
+      <p class="forever-note" id="foreverNote">
+        Choose wisely, my love... 😉
+      </p>
+
+      <div class="success-message" id="successMessage">
+        <div class="big-heart">💖</div>
+
+        <h3>I knew you'd say YES!</h3>
+
+        <p>
+          Here's to a lifetime of birthdays, little moments, silly fights,
+          endless laughter, warm hugs, and choosing each other every
+          single day.
+        </p>
+
+        <p class="promise">
+          You and me, Mau.<br>
+          Today, tomorrow, and forever. ♡
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      MADE WITH ALL MY LOVE, JUST FOR YOU ✨
+    </div>
+  </main>
+
+  <div class="celebration" id="celebration"></div>
+
+  <script>
+    // Floating hearts and sparkles
+    const floatingSymbols = ["♡", "♥", "✧", "💜", "✨"];
+
+    function createFloating() {
+      const item = document.createElement("div");
+      item.className = "floating";
+
+      item.textContent =
+        floatingSymbols[
+          Math.floor(Math.random() * floatingSymbols.length)
+        ];
+
+      item.style.left = Math.random() * 100 + "vw";
+      item.style.fontSize = (13 + Math.random() * 18) + "px";
+      item.style.color = [
+        "rgba(169, 137, 219, 0.55)",
+        "rgba(225, 164, 215, 0.55)",
+        "rgba(255, 255, 255, 0.8)"
+      ][Math.floor(Math.random() * 3)];
+
+      item.style.animationDuration = (8 + Math.random() * 9) + "s";
+
+      document.body.appendChild(item);
+
+      setTimeout(() => item.remove(), 18000);
+    }
+
+    setInterval(createFloating, 700);
+
+    // NO button: playfully dodge mouse and touch attempts
+    const noBtn = document.getElementById("noBtn");
+    const buttonArea = document.getElementById("buttonArea");
+    const yesBtn = document.getElementById("yesBtn");
+    const foreverNote = document.getElementById("foreverNote");
+    const successMessage = document.getElementById("successMessage");
+
+    let noMoves = 0;
+    let yesClicked = false;
+
+    function moveNoButton() {
+      if (yesClicked) return;
+
+      const areaRect = buttonArea.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      // Keep the NO button fully inside its area
+      const maxX = Math.max(0, areaRect.width - btnRect.width);
+      const maxY = Math.max(0, areaRect.height - btnRect.height);
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+      noBtn.style.transform = "none";
+
+      noMoves++;
+
+      const messages = [
+        "Hehe, try again 🙈",
+        "You almost got me! 😜",
+        "Nope, not that easy 💜",
+        "You know which one to choose! 😉",
+        "The YES button is right there! 💖"
+      ];
+
+      foreverNote.textContent =
+        messages[Math.min(noMoves - 1, messages.length - 1)];
+    }
+
+    // Desktop: move away as the cursor approaches
+    noBtn.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "mouse") {
+        moveNoButton();
+      }
+    });
+
+    // Mobile: dodge the finger before the tap completes
+    noBtn.addEventListener("touchstart", (event) => {
+      event.preventDefault();
+      moveNoButton();
+    }, { passive: false });
+
+    // Also handle click attempts
+    noBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      moveNoButton();
+    });
+
+    // YES: reveal the forever message and celebrate
+    yesBtn.addEventListener("click", () => {
+      if (yesClicked) return;
+
+      yesClicked = true;
+
+      successMessage.classList.add("show");
+      foreverNote.textContent = "You just made me the happiest person! 💜";
+
+      noBtn.style.display = "none";
+      yesBtn.textContent = "FOREVER 💖";
+
+      successMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+      createCelebration();
+    });
+
+    // Hearts and sparkles celebration
+    function createCelebration() {
+      const celebration = document.getElementById("celebration");
+      const symbols = ["💖", "💜", "💕", "✨", "💗", "♡", "🌸"];
+
+      for (let i = 0; i < 75; i++) {
+        const piece = document.createElement("div");
+        piece.className = "celebration-piece";
+
+        piece.textContent =
+          symbols[Math.floor(Math.random() * symbols.length)];
+
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.animationDelay = Math.random() * 1.8 + "s";
+        piece.style.fontSize = (14 + Math.random() * 24) + "px";
+
+        celebration.appendChild(piece);
+
+        setTimeout(() => piece.remove(), 6000);
+      }
+    }
+  </script>
+</body>
+</html>
